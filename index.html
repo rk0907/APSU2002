@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Crimson+Text:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ════════════════════════════════════════���══════════
+/* ════════════════════════════════════════════════════
    DESIGN TOKENS — APSU 2002 LIGHT
 ═══════════════════════════════════════════════════ */
 :root,
@@ -26,15 +26,15 @@
   --ink3:         #5A5550;
   --ink4:         #8A8480;
   --ink5:         #B0AAAA;
-  --hero-bg:      #1A1814;
+  --hero-bg:      #0D5E2C;
   --hero-ink:     #FFFFFF;
   --hero-ink2:    rgba(255,255,255,.68);
   --hero-ink3:    rgba(255,255,255,.35);
   --hero-border:  rgba(255,255,255,.1);
-  --school:       #C41E3A;
-  --school-light: #E63E50;
-  --accent:       #1A5F7A;
-  --accent-light: #2B8FB5;
+  --school:       #1BA646;
+  --school-light: #22C856;
+  --accent:       #0D5E2C;
+  --accent-light: #158B3F;
   --gold:         #D4AF37;
   --gold-bg:      #FEF9E7;
   --gold-border:  rgba(212,175,55,.2);
@@ -45,7 +45,7 @@
   --shadow-sm:    0 2px 8px rgba(0,0,0,.08);
   --shadow-md:    0 8px 32px rgba(0,0,0,.12);
   --shadow-lg:    0 24px 64px rgba(0,0,0,.15);
-  --cta-bg:       #C41E3A;
+  --cta-bg:       #1BA646;
   --cta-ink:      #FFFFFF;
   --input-bg:     #F8F6F2;
   --input-focus:  #FFFFFF;
@@ -67,27 +67,27 @@
   --ink3:         #AEA89F;
   --ink4:         #746F68;
   --ink5:         #524C46;
-  --hero-bg:      #0F0E0C;
+  --hero-bg:      #0D5E2C;
   --hero-ink:     #F4F0EB;
   --hero-ink2:    rgba(244,240,235,.55);
   --hero-ink3:    rgba(244,240,235,.25);
   --hero-border:  rgba(244,240,235,.08);
-  --school:       #D63A4A;
-  --school-light: #E95A6A;
-  --accent:       #3A9FCC;
-  --accent-light: #5AB3D6;
+  --school:       #2DCE5E;
+  --school-light: #42E075;
+  --accent:       #1BA646;
+  --accent-light: #2DD859;
   --gold:         #E8C547;
   --gold-bg:      rgba(232,197,71,.12);
   --gold-border:  rgba(232,197,71,.2);
   --toggle-bg:    #322F2A;
   --toggle-knob:  #F4F0EB;
-  --toggle-icon:  #D63A4A;
+  --toggle-icon:  #1BA646;
   --pill-bg:      #1E1C19;
   --shadow-sm:    0 2px 8px rgba(0,0,0,.4);
   --shadow-md:    0 8px 32px rgba(0,0,0,.5);
   --shadow-lg:    0 24px 64px rgba(0,0,0,.6);
-  --cta-bg:       #D63A4A;
-  --cta-ink:      #F4F0EB;
+  --cta-bg:       #2DCE5E;
+  --cta-ink:      #FFFFFF;
   --input-bg:     #1E1C19;
   --input-focus:  #242220;
 }
@@ -107,7 +107,7 @@ body {
   transition: background .4s ease, color .4s ease;
 }
 
-/* ═══════════════════════════════════════════════════
+/* ═════════════════════════════════════════════════��═
    THEME TOGGLE — floating pill
 ═══════════════════════════════════════════════════ */
 .theme-toggle {
@@ -165,15 +165,15 @@ body {
   position: relative; overflow: hidden;
   transition: background .4s;
   background-image: 
-    linear-gradient(135deg, rgba(196,30,58,.08) 0%, transparent 50%),
-    linear-gradient(-135deg, rgba(26,95,122,.08) 0%, transparent 50%);
+    linear-gradient(135deg, rgba(27,166,70,.08) 0%, transparent 50%),
+    linear-gradient(-135deg, rgba(13,94,44,.08) 0%, transparent 50%);
 }
 
 /* Subtle grain */
 .hero::after {
   content: '';
   position: absolute; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' seed='2'/%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23000' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' result='noise'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23000000' opacity='0.05' filter='url(%23n)'/%3E%3C/svg%3E");
   pointer-events: none; z-index: 1; opacity: .7;
 }
 
@@ -182,7 +182,7 @@ body {
   position: absolute; pointer-events: none; z-index: 0;
   top: -150px; right: -150px;
   width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(196,30,58,.12), transparent 60%);
+  background: radial-gradient(circle, rgba(27,166,70,.12), transparent 60%);
   opacity: 0;
   transition: opacity .6s;
 }
@@ -241,19 +241,20 @@ body {
   align-items: center; gap: 12px; flex-shrink: 0;
   opacity: 0; animation: fadeUp .8s .45s both;
 }
-.crest-shell { position: relative; width: 104px; height: 128px; }
+.crest-shell { position: relative; width: 140px; height: 160px; }
 .crest-ring {
   position: absolute; inset: -12px; border-radius: 50%;
-  border: 1.5px dashed rgba(196,30,58,.25);
+  border: 1.5px dashed rgba(27,166,70,.25);
   animation: spinRing 24s linear infinite;
 }
 @keyframes spinRing { to { transform: rotate(360deg); } }
 .crest-img {
   width: 100%; height: 100%; border-radius: 12px;
-  object-fit: cover; display: block;
+  object-fit: contain; display: block;
   border: 2px solid rgba(255,255,255,.12);
-  box-shadow: 0 8px 32px rgba(0,0,0,.4), inset 0 0 0 1px rgba(196,30,58,.2);
-  background: linear-gradient(135deg, rgba(196,30,58,.05), rgba(26,95,122,.05));
+  box-shadow: 0 8px 32px rgba(0,0,0,.4), inset 0 0 0 1px rgba(27,166,70,.2);
+  background: linear-gradient(135deg, rgba(27,166,70,.05), rgba(13,94,44,.05));
+  padding: 8px;
 }
 .hero-location {
   font-size: 10px; font-weight: 700;
@@ -315,7 +316,7 @@ body {
 
 /* ═══════════════════════════════════════════════════
    CARD
-═════��═════════════════════════════════════════════ */
+═══════════════════════════════════════════════════ */
 .card {
   background: var(--surface);
   border: 1.5px solid var(--border);
@@ -342,7 +343,7 @@ body {
 }
 .flbl:first-child { margin-top: 0; }
 
-/* ══════════════════════════════════════════════════��
+/* ══════════════════════════════════════════════════
    AMOUNT GRID
 ═══════════════════════════════════════════════════ */
 .amt-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
@@ -414,12 +415,12 @@ input::placeholder, textarea::placeholder { color: var(--ink5); font-weight: 400
 input:focus, select:focus, textarea:focus {
   border-color: var(--school);
   background: var(--input-focus);
-  box-shadow: 0 0 0 3px rgba(196,30,58,.08);
+  box-shadow: 0 0 0 3px rgba(27,166,70,.08);
 }
 [data-theme="dark"] input:focus,
 [data-theme="dark"] select:focus,
 [data-theme="dark"] textarea:focus {
-  box-shadow: 0 0 0 3px rgba(196,30,58,.15);
+  box-shadow: 0 0 0 3px rgba(27,166,70,.15);
   border-color: var(--school-light);
 }
 
@@ -481,7 +482,7 @@ select option { background: var(--bg2); color: var(--ink); }
   stroke: var(--ink3); fill: none; stroke-width: 1.8;
   transition: stroke .25s;
 }
-.acc-item.open .acc-ico { background: rgba(196,30,58,.1); border-color: rgba(196,30,58,.2); }
+.acc-item.open .acc-ico { background: rgba(27,166,70,.1); border-color: rgba(27,166,70,.2); }
 .acc-item.open .acc-ico svg { stroke: var(--school); }
 
 .acc-text { flex: 1; }
@@ -521,7 +522,7 @@ textarea { resize: none; min-height: 80px; font-size: 13px; line-height: 1.65; }
   cursor: pointer;
   display: flex; align-items: center; justify-content: center; gap: 9px;
   position: relative; overflow: hidden;
-  box-shadow: 0 4px 20px rgba(196,30,58,.25);
+  box-shadow: 0 4px 20px rgba(27,166,70,.25);
   transition: background .4s, color .4s, transform .2s, box-shadow .2s;
 }
 .cta::before {
@@ -532,7 +533,7 @@ textarea { resize: none; min-height: 80px; font-size: 13px; line-height: 1.65; }
   transform: skewX(-18deg);
   transition: left .5s ease;
 }
-.cta:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(196,30,58,.35); }
+.cta:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(27,166,70,.35); }
 .cta:hover::before { left: 130%; }
 .cta:active { transform: translateY(0); }
 .cta svg { width: 17px; height: 17px; fill: currentColor; flex-shrink: 0; }
@@ -575,8 +576,8 @@ footer {
   position: relative;
   transition: background .4s;
   background-image: 
-    linear-gradient(135deg, rgba(196,30,58,.08) 0%, transparent 50%),
-    linear-gradient(-135deg, rgba(26,95,122,.08) 0%, transparent 50%);
+    linear-gradient(135deg, rgba(27,166,70,.08) 0%, transparent 50%),
+    linear-gradient(-135deg, rgba(13,94,44,.08) 0%, transparent 50%);
 }
 footer::before {
   content: '';
@@ -591,9 +592,10 @@ footer::before {
 }
 .foot-logo { display: flex; align-items: center; gap: 12px; }
 .foot-logo-img {
-  width: 48px; height: 48px; border-radius: 8px; object-fit: cover;
-  border: 1.5px solid rgba(196,30,58,.2);
-  background: linear-gradient(135deg, rgba(196,30,58,.1), rgba(26,95,122,.1));
+  width: 60px; height: 60px; border-radius: 8px; object-fit: contain;
+  border: 1.5px solid rgba(27,166,70,.2);
+  background: linear-gradient(135deg, rgba(27,166,70,.1), rgba(13,94,44,.1));
+  padding: 4px;
 }
 .foot-name {
   font-family: 'Playfair Display', serif;
@@ -669,13 +671,13 @@ optgroup { color: var(--ink4); font-size: 11px; font-weight: 700; letter-spacing
 .cc-trigger:focus, .cc-trigger.open {
   border-color: var(--school);
   background: var(--input-focus);
-  box-shadow: 0 0 0 3px rgba(196,30,58,.08);
+  box-shadow: 0 0 0 3px rgba(27,166,70,.08);
   outline: none;
 }
 [data-theme="dark"] .cc-trigger:focus,
 [data-theme="dark"] .cc-trigger.open {
   border-color: var(--school-light);
-  box-shadow: 0 0 0 3px rgba(196,30,58,.15);
+  box-shadow: 0 0 0 3px rgba(27,166,70,.15);
 }
 .cc-trigger svg {
   width: 10px; height: 10px;
@@ -741,7 +743,7 @@ optgroup { color: var(--ink4); font-size: 11px; font-weight: 700; letter-spacing
   transition: background .12s;
 }
 .cc-opt:hover { background: var(--bg2); }
-.cc-opt.active { background: rgba(196,30,58,.1); color: var(--school); }
+.cc-opt.active { background: rgba(27,166,70,.1); color: var(--school); }
 .cc-opt-flag { font-size: 16px; flex-shrink: 0; width: 22px; }
 .cc-opt-name { flex: 1; font-size: 12px; color: var(--ink3); }
 .cc-opt-code { font-weight: 700; font-size: 12px; color: var(--ink2); flex-shrink: 0; }
@@ -799,9 +801,27 @@ optgroup { color: var(--ink4); font-size: 11px; font-weight: 700; letter-spacing
     <div class="hero-right">
       <div class="crest-shell">
         <div class="crest-ring"></div>
-        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(196,30,58,.08), rgba(26,95,122,.08)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 64px; font-weight: 700; color: var(--school); border: 2px solid rgba(255,255,255,.12);">
-          2002
-        </div>
+        <svg class="crest-img" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <!-- Green background shape -->
+          <circle cx="200" cy="200" r="180" fill="#1BA646"/>
+          <!-- White oval center -->
+          <ellipse cx="200" cy="200" r="100" ry="120" fill="#FFFFFF"/>
+          <!-- School crest/shield -->
+          <rect x="140" y="120" width="120" height="140" rx="8" fill="#FFFFFF" stroke="#333" stroke-width="2"/>
+          <!-- Coat of arms simplified -->
+          <circle cx="200" cy="160" r="25" fill="#1BA646" stroke="#333" stroke-width="1.5"/>
+          <polygon points="200,165 195,175 205,175" fill="#FFD700"/>
+          <polygon points="200,155 195,145 205,145" fill="#FFD700"/>
+          <polygon points="185,160 175,155 175,165" fill="#FFD700"/>
+          <polygon points="215,160 225,155 225,165" fill="#FFD700"/>
+          <!-- Cross in center -->
+          <line x1="200" y1="145" x2="200" y2="175" stroke="#333" stroke-width="2"/>
+          <line x1="185" y1="160" x2="215" y2="160" stroke="#333" stroke-width="2"/>
+          <!-- Text: 90th -->
+          <text x="200" y="220" font-size="48" font-weight="bold" text-anchor="middle" fill="#1BA646" font-family="serif">90th</text>
+          <!-- Year indicator -->
+          <text x="200" y="250" font-size="16" text-anchor="middle" fill="#1BA646" font-family="serif">ST. AUGUSTINE'S</text>
+        </svg>
       </div>
       <span class="hero-location">Cape Coast, Ghana</span>
     </div>
@@ -987,7 +1007,23 @@ optgroup { color: var(--ink4); font-size: 11px; font-weight: 700; letter-spacing
 <footer>
   <div class="foot-inner">
     <div class="foot-logo">
-      <div class="foot-logo-img" style="font-size: 28px; display: flex; align-items: center; justify-content: center;">🎓</div>
+      <svg class="foot-logo-img" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Green background shape -->
+        <circle cx="200" cy="200" r="180" fill="#1BA646"/>
+        <!-- White oval center -->
+        <ellipse cx="200" cy="200" r="100" ry="120" fill="#FFFFFF"/>
+        <!-- School crest/shield -->
+        <rect x="140" y="120" width="120" height="140" rx="8" fill="#FFFFFF" stroke="#333" stroke-width="2"/>
+        <!-- Coat of arms simplified -->
+        <circle cx="200" cy="160" r="25" fill="#1BA646" stroke="#333" stroke-width="1.5"/>
+        <polygon points="200,165 195,175 205,175" fill="#FFD700"/>
+        <polygon points="200,155 195,145 205,145" fill="#FFD700"/>
+        <polygon points="185,160 175,155 175,165" fill="#FFD700"/>
+        <polygon points="215,160 225,155 225,165" fill="#FFD700"/>
+        <!-- Cross in center -->
+        <line x1="200" y1="145" x2="200" y2="175" stroke="#333" stroke-width="2"/>
+        <line x1="185" y1="160" x2="215" y2="160" stroke="#333" stroke-width="2"/>
+      </svg>
       <div>
         <div class="foot-name">APSU 2002</div>
       </div>
@@ -999,210 +1035,175 @@ optgroup { color: var(--ink4); font-size: 11px; font-weight: 700; letter-spacing
 
 <!-- ══ TOAST ══════════════════════════════════════ -->
 <div class="toast" id="toast">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-  <span id="toastMsg">Success!</span>
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M13.5 2 6 10l-3-3"/></svg>
+  <span id="toastMsg"></span>
 </div>
 
+<!-- ══ SCRIPTS ══════════════════════════════════════ -->
 <script>
-// ═══════════════════════════════════════════════════
-// COUNTRY CODES
-// ═══════════════════════════════════════════════════
-const countryCodes = [
-  { flag: '🇬🇭', code: '+233', name: 'Ghana' },
-  { flag: '🇳🇬', code: '+234', name: 'Nigeria' },
-  { flag: '🇮🇹', code: '+39', name: 'Italy' },
-  { flag: '🇬🇧', code: '+44', name: 'United Kingdom' },
-  { flag: '🇺🇸', code: '+1', name: 'United States' },
-  { flag: '🇨🇦', code: '+1', name: 'Canada' },
-  { flag: '🇦🇺', code: '+61', name: 'Australia' },
-  { flag: '🇩🇪', code: '+49', name: 'Germany' },
-  { flag: '🇫🇷', code: '+33', name: 'France' },
-  { flag: '🇪🇸', code: '+34', name: 'Spain' },
-  { flag: '🇳🇱', code: '+31', name: 'Netherlands' },
-  { flag: '🇧🇪', code: '+32', name: 'Belgium' },
-  { flag: '🇸🇪', code: '+46', name: 'Sweden' },
-  { flag: '🇫🇮', code: '+358', name: 'Finland' },
-  { flag: '🇳🇴', code: '+47', name: 'Norway' },
-  { flag: '🇯🇵', code: '+81', name: 'Japan' },
-  { flag: '🇰🇷', code: '+82', name: 'South Korea' },
-  { flag: '🇨🇳', code: '+86', name: 'China' },
-  { flag: '🇮🇳', code: '+91', name: 'India' },
-  { flag: '🇧🇷', code: '+55', name: 'Brazil' },
-  { flag: '🇲🇽', code: '+52', name: 'Mexico' },
-  { flag: '🇿🇦', code: '+27', name: 'South Africa' },
-  { flag: '🇪🇬', code: '+20', name: 'Egypt' },
-  { flag: '🇰🇪', code: '+254', name: 'Kenya' },
-  { flag: '🇺🇬', code: '+256', name: 'Uganda' },
-];
-
-let currentAmount = 50;
-let filteredCodes = countryCodes;
-
-// ═══════════════════════════════════════════════════
-// INITIALIZATION
-// ═══════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
-  initCountryCodes();
-  observeCards();
-});
-
-// ═══════════════════════════════════════════════════
-// THEME
-// ═══════════════════════════════════════════════════
-function initTheme() {
-  const saved = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', saved);
-  updateToggleLabel();
-}
-
+// ═════════════════════════════════════════════════
+// THEME TOGGLE
+// ═════════════════════════════════════════════════
 function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme');
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
   const next = current === 'light' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', next);
+  html.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
-  updateToggleLabel();
+  document.getElementById('toggleLabel').textContent = next === 'dark' ? 'Dark' : 'Light';
 }
 
-function updateToggleLabel() {
-  const theme = document.documentElement.getAttribute('data-theme');
-  document.getElementById('toggleLabel').textContent = theme === 'light' ? 'Light' : 'Dark';
+// Load saved theme
+if (localStorage.getItem('theme') === 'dark') {
+  document.documentElement.setAttribute('data-theme', 'dark');
+  document.getElementById('toggleLabel').textContent = 'Dark';
 }
 
-// ═══════════════════════════════════════════════════
+// ═════════════════════════════════════════════════
 // AMOUNT SELECTION
-// ═══════════════════════════════════════════════════
+// ═════════════════════════════════════════════════
+let selectedAmount = 50;
+
 function setAmt(amt, el) {
-  currentAmount = amt;
-  document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('sel'));
+  document.querySelectorAll('.amt-btn').forEach(btn => btn.classList.remove('sel'));
   el.classList.add('sel');
+  selectedAmount = amt;
   document.getElementById('custom-in').value = '';
 }
 
 function onCustom(el) {
-  if (el.value) {
-    currentAmount = parseInt(el.value) || 50;
-    document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('sel'));
-  }
-}
-
-// ═══════════════════════════════════════════════════
-// COUNTRY CODE PICKER
-// ═══════════════════════════════════════════════════
-function initCountryCodes() {
-  renderCountryCodes(countryCodes);
-}
-
-function renderCountryCodes(codes) {
-  const list = document.getElementById('ccList');
-  list.innerHTML = codes.map((c, i) => `
-    <div class="cc-opt ${i === 0 ? 'active' : ''}" onclick="selectCC('${c.flag}','${c.code}','${c.name}')">
-      <span class="cc-opt-flag">${c.flag}</span>
-      <span class="cc-opt-name">${c.name}</span>
-      <span class="cc-opt-code">${c.code}</span>
-    </div>
-  `).join('');
-}
-
-function filterCC(val) {
-  const q = val.toLowerCase();
-  filteredCodes = countryCodes.filter(c => 
-    c.name.toLowerCase().includes(q) || c.code.includes(q)
-  );
-  renderCountryCodes(filteredCodes);
-}
-
-function selectCC(flag, code, name) {
-  document.getElementById('ccFlag').textContent = flag;
-  document.getElementById('ccCode').textContent = code;
-  document.getElementById('ccTrigger').classList.remove('open');
-  document.getElementById('ccMenu').classList.remove('open');
-  document.getElementById('ccSearch').value = '';
-  renderCountryCodes(countryCodes);
-}
-
-function toggleCCMenu() {
-  const menu = document.getElementById('ccMenu');
-  const trigger = document.getElementById('ccTrigger');
-  const isOpen = menu.classList.contains('open');
-  if (isOpen) {
-    menu.classList.remove('open');
-    trigger.classList.remove('open');
-    document.getElementById('ccSearch').value = '';
-    renderCountryCodes(countryCodes);
+  const val = el.value;
+  if (val) {
+    selectedAmount = parseFloat(val) || 0;
+    document.querySelectorAll('.amt-btn').forEach(btn => btn.classList.remove('sel'));
   } else {
-    menu.classList.add('open');
-    trigger.classList.add('open');
-    document.getElementById('ccSearch').focus();
+    document.querySelectorAll('.amt-btn')[0].classList.add('sel');
+    selectedAmount = 50;
   }
 }
 
-document.addEventListener('click', (e) => {
-  if (!document.getElementById('ccWrap').contains(e.target)) {
-    document.getElementById('ccMenu').classList.remove('open');
-    document.getElementById('ccTrigger').classList.remove('open');
-  }
-});
-
-// ═══════════════════════════════════════════════════
+// ═════════════════════════════════════════════════
 // ACCORDION
-// ═══════════════════════════════════════════════════
+// ═════════════════════════════════════════════════
 function togAcc(id) {
   const item = document.getElementById(id);
   item.classList.toggle('open');
 }
 
-// ═══════════════════════════════════════════════════
-// CARD VISIBILITY
-// ═══════════════════════════════════════════════════
-function observeCards() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+// ═════════════════════════════════════════════════
+// COUNTRY CODE PICKER
+// ═════════════════════════════════════════════════
+const countries = [
+  {name:'Ghana',flag:'🇬🇭',code:'+233'},
+  {name:'United States',flag:'🇺🇸',code:'+1'},
+  {name:'United Kingdom',flag:'🇬🇧',code:'+44'},
+  {name:'Canada',flag:'🇨🇦',code:'+1'},
+  {name:'Australia',flag:'🇦🇺',code:'+61'},
+  {name:'Nigeria',flag:'🇳🇬',code:'+234'},
+  {name:'Kenya',flag:'🇰🇪',code:'+254'},
+  {name:'South Africa',flag:'🇿🇦',code:'+27'},
+  {name:'Germany',flag:'🇩🇪',code:'+49'},
+  {name:'France',flag:'🇫🇷',code:'+33'},
+];
 
-  document.querySelectorAll('.card').forEach(card => observer.observe(card));
+function initCC() {
+  const list = document.getElementById('ccList');
+  countries.forEach(c => {
+    const opt = document.createElement('div');
+    opt.className = 'cc-opt' + (c.code === '+233' ? ' active' : '');
+    opt.onclick = () => selectCC(c);
+    opt.innerHTML = `<span class="cc-opt-flag">${c.flag}</span><span class="cc-opt-name">${c.name}</span><span class="cc-opt-code">${c.code}</span>`;
+    list.appendChild(opt);
+  });
 }
 
-// ═══════════════════════════════════════════════════
-// PAYMENT
-// ═══════════════════════════════════════════════════
+function toggleCCMenu() {
+  const menu = document.getElementById('ccMenu');
+  const trigger = document.getElementById('ccTrigger');
+  menu.classList.toggle('open');
+  trigger.classList.toggle('open');
+  if (menu.classList.contains('open')) {
+    document.getElementById('ccSearch').focus();
+  }
+}
+
+function selectCC(c) {
+  document.getElementById('ccFlag').textContent = c.flag;
+  document.getElementById('ccCode').textContent = c.code;
+  document.querySelectorAll('.cc-opt').forEach(opt => opt.classList.remove('active'));
+  event.target.closest('.cc-opt').classList.add('active');
+  document.getElementById('ccMenu').classList.remove('open');
+  document.getElementById('ccTrigger').classList.remove('open');
+}
+
+function filterCC(val) {
+  const opts = document.querySelectorAll('.cc-opt');
+  opts.forEach(opt => {
+    const name = opt.querySelector('.cc-opt-name').textContent.toLowerCase();
+    opt.style.display = name.includes(val.toLowerCase()) ? 'flex' : 'none';
+  });
+}
+
+// Close menu on outside click
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('#ccWrap')) {
+    document.getElementById('ccMenu').classList.remove('open');
+    document.getElementById('ccTrigger').classList.remove('open');
+  }
+});
+
+initCC();
+
+// ═════════════════════════════════════════════════
+// PAYMENT INTEGRATION
+// ═════════════════════════════════════════════════
 function initiatePayment() {
-  const fullname = document.getElementById('fullname').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
+  const fullname = document.getElementById('fullname').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
 
-  if (!fullname) {
-    showToast('Please enter your full name', true);
-    return;
-  }
-  if (!email) {
-    showToast('Please enter your email address', true);
-    return;
-  }
-  if (!phone) {
-    showToast('Please enter your phone number', true);
+  if (!fullname || !email || !phone) {
+    showToast('Please fill in all required fields', true);
     return;
   }
 
+  if (selectedAmount <= 0) {
+    showToast('Please select a valid amount', true);
+    return;
+  }
+
+  const purpose = getPurpose();
   const handler = PaystackPop.setup({
-    key: 'pk_live_YOUR_PAYSTACK_PUBLIC_KEY', // Replace with actual key
+    key: 'pk_test_YOUR_PAYSTACK_KEY_HERE', // Replace with your Paystack key
     email: email,
-    amount: currentAmount * 100, // in pesewas
-    ref: 'APSU2002-' + Math.floor(Math.random() * 1000000000000) + 1,
+    amount: selectedAmount * 100, // Paystack uses cents
+    ref: 'APSU' + Math.floor(Math.random() * 1000000000 + 1),
     onClose: function() {
-      showToast('Payment window closed', false);
+      showToast('Payment window closed', true);
     },
     onSuccess: function(response) {
-      showToast('Thank you for your generous donation! 🎓', false);
+      showToast(`Donation of GH₵${selectedAmount} completed! Thank you!`);
       resetForm();
     }
   });
   handler.openIframe();
+}
+
+function getPurpose() {
+  const items = document.querySelectorAll('.acc-item.open');
+  if (items.length > 0) {
+    return items[0].querySelector('.acc-title').textContent;
+  }
+  return 'General Contribution';
+}
+
+function showToast(msg, isErr = false) {
+  const toast = document.getElementById('toast');
+  const msgEl = document.getElementById('toastMsg');
+  msgEl.textContent = msg;
+  toast.classList.toggle('err', isErr);
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
 }
 
 function resetForm() {
@@ -1210,19 +1211,23 @@ function resetForm() {
   document.getElementById('email').value = '';
   document.getElementById('phone').value = '';
   document.getElementById('batch').value = '';
-  document.getElementById('custom-in').value = '';
-  setAmt(50, document.querySelector('.amt-btn'));
-  document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+  document.querySelectorAll('.acc-item').forEach(item => item.classList.remove('open'));
+  document.querySelectorAll('.amt-btn').forEach((btn, i) => {
+    btn.classList.toggle('sel', i === 0);
+  });
+  selectedAmount = 50;
 }
 
-function showToast(msg, isErr) {
-  const toast = document.getElementById('toast');
-  const toastMsg = document.getElementById('toastMsg');
-  toastMsg.textContent = msg;
-  toast.classList.toggle('err', isErr);
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 3500);
-}
+// Trigger card animation on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
 </script>
 
 </body>
