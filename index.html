@@ -1,24 +1,17 @@
-<!DOCTYPE html>
+￼<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alumni Fund – Teachers' Accommodation Project</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #f5f5f5;
       color: #1a1a1a;
       line-height: 1.5;
     }
-
-    /* ===== Navigation ===== */
     .navbar {
       background: #ffffff;
       border-bottom: 1px solid #e5e5e5;
@@ -31,36 +24,26 @@
       top: 0;
       z-index: 100;
     }
-
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.75rem;
       font-weight: 600;
       font-size: 1.15rem;
       color: #111;
       text-decoration: none;
     }
-
-    .logo-icon {
-      width: 28px;
-      height: 28px;
-      background: #111;
+    .logo img {
+      width: 36px;
+      height: 36px;
       border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 14px;
-      font-weight: 700;
+      object-fit: contain;
     }
-
     .nav-links {
       display: flex;
       gap: 2rem;
       list-style: none;
     }
-
     .nav-links a {
       text-decoration: none;
       color: #444;
@@ -68,12 +51,7 @@
       font-weight: 500;
       transition: color 0.2s;
     }
-
-    .nav-links a:hover {
-      color: #000;
-    }
-
-    /* ===== Hero ===== */
+    .nav-links a:hover { color: #000; }
     .hero {
       position: relative;
       height: 520px;
@@ -85,22 +63,18 @@
       text-align: center;
       color: white;
     }
-
     .hero-bg {
       position: absolute;
       inset: 0;
       background: url('YOUR_IMAGE_URL_HERE') center/cover no-repeat;
-      /* Replace the URL above with the actual image path or base64 if needed */
       filter: brightness(0.55);
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
       max-width: 720px;
       padding: 0 1.5rem;
     }
-
     .hero h1 {
       font-size: 3.2rem;
       font-weight: 700;
@@ -108,13 +82,11 @@
       margin-bottom: 0.75rem;
       letter-spacing: -0.02em;
     }
-
     .hero p {
       font-size: 1.2rem;
       opacity: 0.9;
       margin-bottom: 2rem;
     }
-
     .btn {
       display: inline-block;
       background: #1a1a1a;
@@ -128,13 +100,10 @@
       transition: all 0.2s;
       cursor: pointer;
     }
-
     .btn:hover {
       background: white;
       color: #1a1a1a;
     }
-
-    /* ===== Cards Section ===== */
     .cards-section {
       max-width: 1100px;
       margin: -60px auto 3rem;
@@ -145,7 +114,6 @@
       position: relative;
       z-index: 10;
     }
-
     .card {
       background: white;
       border-radius: 12px;
@@ -153,20 +121,17 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       border: 1px solid #eee;
     }
-
     .card h3 {
       font-size: 1.15rem;
       font-weight: 600;
       margin-bottom: 0.75rem;
       color: #111;
     }
-
     .card p {
       font-size: 0.95rem;
       color: #555;
       line-height: 1.6;
     }
-
     .progress-bar {
       height: 8px;
       background: #e5e5e5;
@@ -174,27 +139,22 @@
       margin: 1rem 0 0.5rem;
       overflow: hidden;
     }
-
     .progress-fill {
       height: 100%;
       width: 42%;
       background: #1a1a1a;
       border-radius: 4px;
     }
-
     .progress-text {
       font-size: 0.9rem;
       color: #666;
       font-weight: 500;
     }
-
-    /* ===== Donation Form ===== */
     .donate-section {
       max-width: 560px;
       margin: 0 auto 5rem;
       padding: 0 1.5rem;
     }
-
     .donate-card {
       background: white;
       border-radius: 16px;
@@ -202,25 +162,21 @@
       box-shadow: 0 4px 24px rgba(0,0,0,0.08);
       border: 1px solid #eee;
     }
-
     .donate-card h2 {
       font-size: 1.6rem;
       font-weight: 700;
-      margin-bottom: 0.4rem;
       text-align: center;
+      margin-bottom: 0.4rem;
     }
-
     .donate-card > p {
       text-align: center;
       color: #666;
       font-size: 0.95rem;
       margin-bottom: 2rem;
     }
-
     .form-group {
       margin-bottom: 1.25rem;
     }
-
     .form-group label {
       display: block;
       font-size: 0.875rem;
@@ -228,7 +184,6 @@
       margin-bottom: 0.4rem;
       color: #333;
     }
-
     .form-group input,
     .form-group select {
       width: 100%;
@@ -240,14 +195,47 @@
       background: #fafafa;
       transition: border-color 0.2s, background 0.2s;
     }
-
     .form-group input:focus,
     .form-group select:focus {
       outline: none;
       border-color: #1a1a1a;
       background: white;
     }
-
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      cursor: pointer;
+    }
+    .amount-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+    .amount-btn {
+      padding: 0.85rem 0.4rem;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      background: #fafafa;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #333;
+    }
+    .amount-btn:hover { border-color: #1a1a1a; }
+    .amount-btn.active {
+      background: #1a1a1a;
+      color: white;
+      border-color: #1a1a1a;
+    }
+    .form-divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 1.75rem 0;
+    }
     .donate-btn {
       width: 100%;
       margin-top: 0.5rem;
@@ -261,39 +249,29 @@
       cursor: pointer;
       transition: background 0.2s, transform 0.15s;
     }
-
     .donate-btn:hover {
       background: #333;
       transform: translateY(-1px);
     }
-
-    /* ===== Responsive ===== */
     @media (max-width: 800px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.2rem; }
       .cards-section {
         grid-template-columns: 1fr;
         margin-top: -40px;
       }
-
-      .donate-card {
-        padding: 1.75rem;
-      }
+      .donate-card { padding: 1.75rem; }
+    }
+    @media (max-width: 500px) {
+      .amount-options { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav class="navbar">
     <a href="#" class="logo">
-      <div class="logo-icon">A</div>
+      <img src="data:image/png;base64,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" alt="APSU 2002 Logo">
       Alumni Fund
     </a>
     <ul class="nav-links">
@@ -304,7 +282,6 @@
     </ul>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
@@ -314,34 +291,45 @@
     </div>
   </section>
 
-  <!-- Three Cards -->
   <section class="cards-section">
     <div class="card">
       <h3>The Project</h3>
       <p>Housing for educators is a lasting investment. This 14-unit facility will provide safe, modern homes for teachers who shape the next generation.</p>
     </div>
-
     <div class="card">
       <h3>Our Progress</h3>
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
-      </div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
       <p class="progress-text">42% funded</p>
     </div>
-
     <div class="card">
       <h3>Why It Matters</h3>
       <p>When teachers have stable housing near their schools, students benefit from more consistent, focused, and inspired education.</p>
     </div>
   </section>
 
-  <!-- Donation Form -->
   <section class="donate-section" id="donate">
     <div class="donate-card">
       <h2>Make a Donation</h2>
       <p>Every contribution helps build homes for our teachers</p>
 
       <form id="donationForm" onsubmit="handleDonate(event)">
+        <div class="form-group">
+          <label>Select Amount</label>
+          <div class="amount-options">
+            <button type="button" class="amount-btn active" data-amount="10000">₦10,000</button>
+            <button type="button" class="amount-btn" data-amount="25000">₦25,000</button>
+            <button type="button" class="amount-btn" data-amount="50000">₦50,000</button>
+            <button type="button" class="amount-btn" data-amount="100000">₦100,000</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="customAmount">Custom Amount (₦)</label>
+          <input type="number" id="customAmount" name="customAmount" min="100" placeholder="Enter amount">
+        </div>
+
+        <hr class="form-divider">
+
         <div class="form-group">
           <label for="name">Full Name *</label>
           <input type="text" id="name" name="name" required placeholder="John Doe">
@@ -353,75 +341,74 @@
         </div>
 
         <div class="form-group">
-  <label for="yearGroup">Year Group *</label>
-  <select id="yearGroup" name="yearGroup" required>
-    <option value="" disabled selected>Select your year group</option>
-    <!-- Years will be generated by JavaScript -->
-  </select>
-</div>
-
-        <div class="form-group">
           <label for="phone">Phone Number</label>
           <input type="tel" id="phone" name="phone" placeholder="+234 800 000 0000">
         </div>
 
         <div class="form-group">
-          <label for="amount">Amount (₦) *</label>
-          <input type="number" id="amount" name="amount" required min="100" placeholder="e.g. 50000">
+          <label for="yearGroup">Year Group *</label>
+          <select id="yearGroup" name="yearGroup" required>
+            <option value="" disabled selected>Select your year group</option>
+          </select>
         </div>
 
-        <!-- Donate button at the bottom of the form -->
         <button type="submit" class="donate-btn">Donate Now</button>
       </form>
     </div>
   </section>
 
   <script>
+    // Generate Year Group dropdown (1984 – 2026)
+    const yearSelect = document.getElementById('yearGroup');
+    for (let year = 2026; year >= 1984; year--) {
+      const option = document.createElement('option');
+      option.value = year;
+      option.textContent = year;
+      yearSelect.appendChild(option);
+    }
+
+    // Amount button selection
+    let selectedAmount = 10000;
+
+    document.querySelectorAll('.amount-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedAmount = parseInt(btn.dataset.amount);
+        document.getElementById('customAmount').value = '';
+      });
+    });
+
+    document.getElementById('customAmount').addEventListener('input', function() {
+      if (this.value) {
+        document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+        selectedAmount = null;
+      }
+    });
+
     function handleDonate(e) {
       e.preventDefault();
-
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
-      const yearGroup = document.getElementById('yearGroup').value.trim();
+      const yearGroup = document.getElementById('yearGroup').value;
       const phone = document.getElementById('phone').value.trim();
-      const amount = document.getElementById('amount').value;
+      const customAmount = document.getElementById('customAmount').value;
 
-      // Basic validation already handled by HTML required attributes
-      console.log({
-        name,
-        email,
-        yearGroup,
-        phone,
-        amount
-      });
+      let amount = selectedAmount;
+      if (customAmount) amount = parseFloat(customAmount);
 
-      // Replace this alert with your actual payment logic (Paystack, Flutterwave, etc.)
-      alert(`Thank you ${name}!\n\nDonation details:\nYear Group: ${yearGroup}\nAmount: ₦${Number(amount).toLocaleString()}\n\n(Connect your payment gateway here)`);
+      if (!amount || amount < 100) {
+        alert('Please select or enter a valid amount');
+        return;
+      }
+      if (!yearGroup) {
+        alert('Please select your year group');
+        return;
+      }
+
+      console.log({ name, email, yearGroup, phone, amount });
+      alert(`Thank you ${name}!\n\nYear Group: ${yearGroup}\nAmount: ₦${Number(amount).toLocaleString()}\n\n(Connect your payment gateway here)`);
     }
   </script>
-<script>
-  // Generate Year Group dropdown (1984 – 2026)
-  const yearSelect = document.getElementById('yearGroup');
-  for (let year = 2026; year >= 1984; year--) {
-    const option = document.createElement('option');
-    option.value = year;
-    option.textContent = year;
-    yearSelect.appendChild(option);
-  }
-
-  function handleDonate(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const yearGroup = document.getElementById('yearGroup').value;
-    const phone = document.getElementById('phone').value.trim();
-    const amount = document.getElementById('amount').value;
-
-    console.log({ name, email, yearGroup, phone, amount });
-
-    alert(`Thank you ${name}!\n\nDonation details:\nYear Group: ${yearGroup}\nAmount: ₦${Number(amount).toLocaleString()}\n\n(Connect your payment gateway here)`);
-  }
-</script>
 </body>
 </html>
