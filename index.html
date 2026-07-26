@@ -1,627 +1,401 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>APSU 2002 Fundraiser — 97 Years of Excellence at St. Augustine's</title>
-<script src="https://js.paystack.co/v1/inline.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Crimson+Text:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Fund – Teachers' Accommodation Project</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-/* ════════════════════════════════════════════════════
-   DESIGN TOKENS
-═══════════════════════════════════════════════════ */
-:root {
-  --primary-green: #0D5E2C;
-  --secondary-green: #1BA646;
-  --light-green: #22C856;
-  --gold: #D4AF37;
-  --gold-light: #E8C547;
-  --dark-bg: #1A1814;
-  --white: #FFFFFF;
-  --light-gray: #F3F1ED;
-  --medium-gray: #EBE8E0;
-  --border-gray: #D4D0C8;
-  --text-dark: #1A1814;
-  --text-gray: #5A5550;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+    /* ===== Navigation ===== */
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--white);
-  color: var(--text-dark);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: #111;
+      text-decoration: none;
+    }
 
-/* ═══════════════════════════════════════════════════
-   HEADER
-═══════════════════════════════════════════════════ */
-header {
-  background: var(--white);
-  padding: 24px 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid var(--medium-gray);
-}
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: #111;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+    }
 
-.logo-group {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
 
-.logo-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
+    .nav-links a {
+      text-decoration: none;
+      color: #444;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-.logo-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 12px;
-  object-fit: contain;
-  background: var(--light-gray);
-  padding: 8px;
-}
+    .nav-links a:hover {
+      color: #000;
+    }
 
-.logo-text {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--primary-green);
-  text-align: center;
-  max-width: 90px;
-}
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      height: 520px;
+      background: #1a1a1a;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
 
-/* ═══════════════════════════════════════════════════
-   HERO SECTION
-═══════════════════════════════════════════════════ */
-.hero {
-  background: var(--primary-green);
-  background-image: 
-    linear-gradient(135deg, rgba(27,166,70,.08) 0%, transparent 50%),
-    linear-gradient(-135deg, rgba(13,94,44,.08) 0%, transparent 50%);
-  color: var(--white);
-  padding: 60px 48px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('YOUR_IMAGE_URL_HERE') center/cover no-repeat;
+      /* Replace the URL above with the actual image path or base64 if needed */
+      filter: brightness(0.55);
+    }
 
-.hero-left h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 56px;
-  font-weight: 900;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
-}
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding: 0 1.5rem;
+    }
 
-.hero-left p {
-  font-size: 16px;
-  line-height: 1.8;
-  opacity: 0.9;
-  margin-bottom: 24px;
-}
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
 
-.hero-right {
-  position: relative;
-  height: 400px;
-  overflow: hidden;
-  border-radius: 12px;
-  background: rgba(255,255,255,.1);
-}
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
 
-.hero-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .btn {
+      display: inline-block;
+      background: #1a1a1a;
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid white;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
 
-/* ═══════════════════════════════════════════════════
-   MISSION SECTION
-═══════════════════════════════════════════════════ */
-.mission {
-  background: var(--white);
-  padding: 60px 48px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  border-top: 8px solid var(--gold);
-}
+    .btn:hover {
+      background: white;
+      color: #1a1a1a;
+    }
 
-.mission-left h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  font-weight: 900;
-  margin-bottom: 16px;
-  color: var(--text-dark);
-}
+    /* ===== Cards Section ===== */
+    .cards-section {
+      max-width: 1100px;
+      margin: -60px auto 3rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
 
-.mission-left p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: var(--text-gray);
-  margin-bottom: 24px;
-}
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid #eee;
+    }
 
-.mission-right {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #111;
+    }
 
-.progress-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+    }
 
-.progress-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-dark);
-}
+    .progress-bar {
+      height: 8px;
+      background: #e5e5e5;
+      border-radius: 4px;
+      margin: 1rem 0 0.5rem;
+      overflow: hidden;
+    }
 
-.progress-bar {
-  width: 100%;
-  height: 24px;
-  background: var(--medium-gray);
-  border-radius: 100px;
-  overflow: hidden;
-  border: 2px solid var(--border-gray);
-}
+    .progress-fill {
+      height: 100%;
+      width: 42%;
+      background: #1a1a1a;
+      border-radius: 4px;
+    }
 
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--secondary-green), var(--light-green));
-  width: 49%;
-  transition: width 0.8s ease;
-}
+    .progress-text {
+      font-size: 0.9rem;
+      color: #666;
+      font-weight: 500;
+    }
 
-.progress-text {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-gray);
-  margin-top: 4px;
-}
+    /* ===== Donation Form ===== */
+    .donate-section {
+      max-width: 560px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+    }
 
-/* ═══════════════════════════════════════════════════
-   CTA BUTTON
-═══════════════════════════════════════════════════ */
-.cta-button {
-  display: inline-block;
-  background: var(--primary-green);
-  color: var(--white);
-  padding: 14px 36px;
-  border: none;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 16px rgba(13, 94, 44, 0.3);
-}
+    .donate-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border: 1px solid #eee;
+    }
 
-.cta-button:hover {
-  background: var(--secondary-green);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(13, 94, 44, 0.4);
-}
+    .donate-card h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
 
-/* ═══════════════════════════════════════════════════
-   FEATURES GRID
-═══════════════════════════════════════════════════ */
-.features {
-  background: var(--light-gray);
-  padding: 60px 48px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
+    .donate-card > p {
+      text-align: center;
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
 
-.feature-card {
-  background: var(--white);
-  padding: 48px 32px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
 
-.feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
 
-.feature-icon {
-  width: 80px;
-  height: 80px;
-  background: var(--primary-green);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  font-size: 40px;
-}
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fafafa;
+      transition: border-color 0.2s, background 0.2s;
+    }
 
-.feature-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 12px;
-}
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #1a1a1a;
+      background: white;
+    }
 
-.feature-card p {
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--text-gray);
-  margin-bottom: 24px;
-  flex: 1;
-}
+    .donate-btn {
+      width: 100%;
+      margin-top: 0.5rem;
+      background: #1a1a1a;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
 
-.feature-button {
-  background: var(--primary-green);
-  color: var(--white);
-  padding: 10px 24px;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
+    .donate-btn:hover {
+      background: #333;
+      transform: translateY(-1px);
+    }
 
-.feature-button:hover {
-  background: var(--secondary-green);
-}
+    /* ===== Responsive ===== */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
 
-/* ═══════════════════════════════════════════════════
-   HALL OF FAME SECTION
-═══════════════════════════════════════════════════ */
-.hall-of-fame {
-  background: var(--gold-light);
-  background: linear-gradient(135deg, var(--gold), #E8C547);
-  padding: 60px 48px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-}
+      .hero h1 {
+        font-size: 2.2rem;
+      }
 
-.fame-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+      .cards-section {
+        grid-template-columns: 1fr;
+        margin-top: -40px;
+      }
 
-.fame-section h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 900;
-  color: var(--text-dark);
-  margin-bottom: 8px;
-}
-
-.fame-item {
-  font-size: 14px;
-  color: var(--text-dark);
-  line-height: 1.6;
-}
-
-.fame-item strong {
-  display: block;
-  font-weight: 700;
-}
-
-.fame-subtitle {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--primary-green);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-/* ═══════════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════════ */
-footer {
-  background: var(--primary-green);
-  color: var(--white);
-  padding: 48px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-
-.footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.footer-left h4 {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  font-weight: 700;
-}
-
-.footer-contact {
-  font-size: 13px;
-  line-height: 1.8;
-  opacity: 0.9;
-}
-
-.footer-contact strong {
-  display: block;
-  opacity: 1;
-  font-weight: 600;
-}
-
-.social-icons {
-  display: flex;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.social-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.social-icon:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.footer-right {
-  display: flex;
-  gap: 40px;
-}
-
-.footer-column {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.footer-column h5 {
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  opacity: 0.8;
-}
-
-.footer-column img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 4px;
-}
-
-/* ═══════════════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════════════ */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    gap: 24px;
-    padding: 20px 24px;
-  }
-
-  .logo-group {
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 40px 24px;
-    gap: 24px;
-  }
-
-  .hero-left h1 {
-    font-size: 36px;
-  }
-
-  .mission {
-    grid-template-columns: 1fr;
-    padding: 40px 24px;
-    gap: 40px;
-  }
-
-  .features {
-    grid-template-columns: 1fr;
-    padding: 40px 24px;
-  }
-
-  .hall-of-fame {
-    grid-template-columns: 1fr;
-    padding: 40px 24px;
-  }
-
-  footer {
-    grid-template-columns: 1fr;
-    padding: 40px 24px;
-    gap: 32px;
-  }
-
-  .footer-right {
-    gap: 24px;
-  }
-}
-</style>
-
+      .donate-card {
+        padding: 1.75rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- ══ HEADER ══════════════════════════════════════ -->
-<header>
-  <div class="logo-group">
-    <div class="logo-item">
-      <div class="logo-img">🎓</div>
-      <div class="logo-text">APSU<br>2002 Year Group</div>
-    </div>
-    <div class="logo-item">
-      <div class="logo-img">✨</div>
-      <div class="logo-text">97th<br>Anniversary</div>
-    </div>
-  </div>
-</header>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="#" class="logo">
+      <div class="logo-icon">A</div>
+      Alumni Fund
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Project</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- ══ HERO SECTION ════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-left">
-    <h1>97 Years of Excellence:<br>Help APSU 2002 Secure a<br>Brighter Future for<br>St. Augustine's College.</h1>
-    <p>Our mission is to uphold the legacy of St. Augustine's College and secure a brighter future for generations to come.</p>
-    <button class="cta-button" onclick="scrollToDonate()">Donate Now</button>
-  </div>
-  <div class="hero-right">
-    <img src="https://via.placeholder.com/500x400/0D5E2C/FFFFFF?text=St+Augustine's+Students" alt="St. Augustine's students">
-  </div>
-</section>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>Help Build Homes<br>for Our Teachers</h1>
+      <p>Support the 14-Unit Teachers' Accommodation Project</p>
+      <a href="#donate" class="btn">Donate Now</a>
+    </div>
+  </section>
 
-<!-- ══ MISSION SECTION ════════════════════════════ -->
-<section class="mission">
-  <div class="mission-left">
-    <h2>Supporting our Alma Mater:<br>A Golden Opportunity</h2>
-    <p>Our mission statement oodhnes and help APSU 2002 secure a Brighter future for St. Augustine's College.</p>
-  </div>
-  <div class="mission-right">
-    <div class="progress-item">
-      <div class="progress-label">Campaign Total</div>
+  <!-- Three Cards -->
+  <section class="cards-section">
+    <div class="card">
+      <h3>The Project</h3>
+      <p>Housing for educators is a lasting investment. This 14-unit facility will provide safe, modern homes for teachers who shape the next generation.</p>
+    </div>
+
+    <div class="card">
+      <h3>Our Progress</h3>
       <div class="progress-bar">
         <div class="progress-fill"></div>
       </div>
-      <div class="progress-text">$245,000 / $500,000 raised</div>
-      <div class="progress-text">49% Complete</div>
+      <p class="progress-text">42% funded</p>
     </div>
-  </div>
-</section>
 
-<!-- ══ FEATURES GRID ══════════════════════════════ -->
-<section class="features">
-  <div class="feature-card">
-    <div class="feature-icon">🏫</div>
-    <h3>School Infrastructure Upgrades</h3>
-    <p>Our law quality mesoitours will view the emiless and welcomement transport school infrastructure upgrades.</p>
-    <button class="feature-button">Support</button>
-  </div>
-  
-  <div class="feature-card">
-    <div class="feature-icon">🎓</div>
-    <h3>Scholarships for Students</h3>
-    <p>Scholarships for Students awards for students, tisusurus aring esom eduation andvant onsit scholorship.</p>
-    <button class="feature-button">Support</button>
-  </div>
-  
-  <div class="feature-card">
-    <div class="feature-icon">🏢</div>
-    <h3>Campus Modernization</h3>
-    <p>Campus Modernization are marmoscyew campus modernization, eveclosios-heating indemtates, and terms.</p>
-    <button class="feature-button">Support</button>
-  </div>
-</section>
+    <div class="card">
+      <h3>Why It Matters</h3>
+      <p>When teachers have stable housing near their schools, students benefit from more consistent, focused, and inspired education.</p>
+    </div>
+  </section>
 
-<!-- ══ HALL OF FAME ═══════════════════════════════ -->
-<section class="hall-of-fame">
-  <div class="fame-section">
-    <h3>Hall of Fame</h3>
-    <div class="fame-subtitle">Major Donors:</div>
-    <div class="fame-item">
-      <strong>St. Augustine's Collegemen</strong>
-      John Bevers
-    </div>
-  </div>
-  
-  <div class="fame-section">
-    <div class="fame-subtitle">Prayer Donors:</div>
-    <div class="fame-item">
-      <strong>Alvaran Eorom</strong>
-    </div>
-    <div class="fame-item">
-      <strong>St. Augustine's Colleagues</strong>
-    </div>
-  </div>
-  
-  <div class="fame-section">
-    <h3>Upcoming Batch Reunion</h3>
-    <div class="fame-item">
-      Saturday, Batch Reunion 67 2022 – 12:00 AM<br>
-      Datch-Donors for St. Augustine's 11:00 PM
-    </div>
-  </div>
-</section>
+  <!-- Donation Form -->
+  <section class="donate-section" id="donate">
+    <div class="donate-card">
+      <h2>Make a Donation</h2>
+      <p>Every contribution helps build homes for our teachers</p>
 
-<!-- ══ FOOTER ═════════════════════════════════════ -->
-<footer>
-  <div class="footer-left">
-    <h4>APSU 2002</h4>
-    <div class="footer-contact">
-      <strong>Phoner St. Augustine's College</strong>
-      F. (371) 375-7990<br>
-      www.apsu 2002.com
-    </div>
-    <div class="social-icons">
-      <div class="social-icon">f</div>
-      <div class="social-icon">𝕏</div>
-      <div class="social-icon">▶</div>
-      <div class="social-icon">📷</div>
-    </div>
-  </div>
-  
-  <div class="footer-right">
-    <div class="footer-column">
-      <h5>School Crest</h5>
-      <img src="https://via.placeholder.com/60x60/1BA646/FFFFFF?text=Crest" alt="School crest 1">
-    </div>
-    <div class="footer-column">
-      <h5>90th Badge</h5>
-      <img src="https://via.placeholder.com/60x60/1BA646/FFFFFF?text=Badge" alt="90th Badge">
-    </div>
-  </div>
-</footer>
+      <form id="donationForm" onsubmit="handleDonate(event)">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" required placeholder="John Doe">
+        </div>
 
-<script>
-function scrollToDonate() {
-  // Scroll to donation form if it exists
-  const donateElement = document.getElementById('mainCard');
-  if (donateElement) {
-    donateElement.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-</script>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="yearGroup">Year Group *</label>
+          <input type="text" id="yearGroup" name="yearGroup" required placeholder="e.g. 2002 / Class of 2015">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+234 800 000 0000">
+        </div>
+
+        <div class="form-group">
+          <label for="amount">Amount (₦) *</label>
+          <input type="number" id="amount" name="amount" required min="100" placeholder="e.g. 50000">
+        </div>
+
+        <!-- Donate button at the bottom of the form -->
+        <button type="submit" class="donate-btn">Donate Now</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    function handleDonate(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const yearGroup = document.getElementById('yearGroup').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const amount = document.getElementById('amount').value;
+
+      // Basic validation already handled by HTML required attributes
+      console.log({
+        name,
+        email,
+        yearGroup,
+        phone,
+        amount
+      });
+
+      // Replace this alert with your actual payment logic (Paystack, Flutterwave, etc.)
+      alert(`Thank you ${name}!\n\nDonation details:\nYear Group: ${yearGroup}\nAmount: ₦${Number(amount).toLocaleString()}\n\n(Connect your payment gateway here)`);
+    }
+  </script>
 
 </body>
 </html>
