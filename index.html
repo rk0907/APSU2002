@@ -3,1231 +3,624 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>APSU 2002 Fundraiser — St. Augustine's Past Students Union Cape Coast</title>
+<title>APSU 2002 Fundraiser — 97 Years of Excellence at St. Augustine's</title>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Crimson+Text:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ════════════════════════════════════════════════════
-   DESIGN TOKENS — APSU 2002 LIGHT
+   DESIGN TOKENS
 ═══════════════════════════════════════════════════ */
-:root,
-[data-theme="light"] {
-  --bg:           #FAFAF8;
-  --bg2:          #F3F1ED;
-  --bg3:          #EBE8E0;
-  --surface:      #FFFFFF;
-  --surface2:     #F8F6F2;
-  --border:       #D4D0C8;
-  --border2:      #BEBAB0;
-  --ink:          #1A1814;
-  --ink2:         #3A3530;
-  --ink3:         #5A5550;
-  --ink4:         #8A8480;
-  --ink5:         #B0AAAA;
-  --hero-bg:      #0D5E2C;
-  --hero-ink:     #FFFFFF;
-  --hero-ink2:    rgba(255,255,255,.68);
-  --hero-ink3:    rgba(255,255,255,.35);
-  --hero-border:  rgba(255,255,255,.1);
-  --school:       #1BA646;
-  --school-light: #22C856;
-  --accent:       #0D5E2C;
-  --accent-light: #158B3F;
-  --gold:         #D4AF37;
-  --gold-bg:      #FEF9E7;
-  --gold-border:  rgba(212,175,55,.2);
-  --toggle-bg:    #D4D0C8;
-  --toggle-knob:  #FFFFFF;
-  --toggle-icon:  #3A3530;
-  --pill-bg:      #EBE8E0;
-  --shadow-sm:    0 2px 8px rgba(0,0,0,.08);
-  --shadow-md:    0 8px 32px rgba(0,0,0,.12);
-  --shadow-lg:    0 24px 64px rgba(0,0,0,.15);
-  --cta-bg:       #1BA646;
-  --cta-ink:      #FFFFFF;
-  --input-bg:     #F8F6F2;
-  --input-focus:  #FFFFFF;
+:root {
+  --primary-green: #0D5E2C;
+  --secondary-green: #1BA646;
+  --light-green: #22C856;
+  --gold: #D4AF37;
+  --gold-light: #E8C547;
+  --dark-bg: #1A1814;
+  --white: #FFFFFF;
+  --light-gray: #F3F1ED;
+  --medium-gray: #EBE8E0;
+  --border-gray: #D4D0C8;
+  --text-dark: #1A1814;
+  --text-gray: #5A5550;
 }
 
-/* ═══════════════════════════════════════════════════
-   DESIGN TOKENS — DARK
-═══════════════════════════════════════════════════ */
-[data-theme="dark"] {
-  --bg:           #0F0E0C;
-  --bg2:          #161512;
-  --bg3:          #1E1C19;
-  --surface:      #1C1A17;
-  --surface2:     #242220;
-  --border:       #322F2A;
-  --border2:      #3E3A34;
-  --ink:          #F4F0EB;
-  --ink2:         #DDD7D0;
-  --ink3:         #AEA89F;
-  --ink4:         #746F68;
-  --ink5:         #524C46;
-  --hero-bg:      #0D5E2C;
-  --hero-ink:     #F4F0EB;
-  --hero-ink2:    rgba(244,240,235,.55);
-  --hero-ink3:    rgba(244,240,235,.25);
-  --hero-border:  rgba(244,240,235,.08);
-  --school:       #2DCE5E;
-  --school-light: #42E075;
-  --accent:       #1BA646;
-  --accent-light: #2DD859;
-  --gold:         #E8C547;
-  --gold-bg:      rgba(232,197,71,.12);
-  --gold-border:  rgba(232,197,71,.2);
-  --toggle-bg:    #322F2A;
-  --toggle-knob:  #F4F0EB;
-  --toggle-icon:  #1BA646;
-  --pill-bg:      #1E1C19;
-  --shadow-sm:    0 2px 8px rgba(0,0,0,.4);
-  --shadow-md:    0 8px 32px rgba(0,0,0,.5);
-  --shadow-lg:    0 24px 64px rgba(0,0,0,.6);
-  --cta-bg:       #2DCE5E;
-  --cta-ink:      #FFFFFF;
-  --input-bg:     #1E1C19;
-  --input-focus:  #242220;
-}
-
-/* ═══════════════════════════════════════════════════
-   RESET + BASE
-═══════════════════════════════════════════════════ */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--ink);
+  background: var(--white);
+  color: var(--text-dark);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  transition: background .4s ease, color .4s ease;
-}
-
-/* ═════════════════════════════════════════════════��═
-   THEME TOGGLE — floating pill
-═══════════════════════════════════════════════════ */
-.theme-toggle {
-  position: fixed;
-  top: 20px; right: 20px;
-  z-index: 1000;
-  display: flex; align-items: center; gap: 10px;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 100px;
-  padding: 8px 14px 8px 10px;
-  box-shadow: var(--shadow-md);
-  cursor: pointer;
-  transition: background .4s, border-color .4s, box-shadow .2s, transform .15s;
-  user-select: none;
-}
-.theme-toggle:hover { transform: translateY(-1px); box-shadow: var(--shadow-lg); }
-.theme-toggle:active { transform: translateY(0); }
-
-.toggle-track {
-  width: 36px; height: 20px;
-  border-radius: 100px;
-  background: var(--toggle-bg);
-  position: relative;
-  transition: background .4s;
-  flex-shrink: 0;
-}
-[data-theme="dark"] .toggle-track { background: var(--school); }
-
-.toggle-knob {
-  position: absolute;
-  top: 2px; left: 2px;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: var(--toggle-knob);
-  transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .4s;
-  box-shadow: 0 1px 4px rgba(0,0,0,.2);
-  display: flex; align-items: center; justify-content: center;
-}
-[data-theme="dark"] .toggle-knob { transform: translateX(16px); }
-
-.toggle-label {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 1px; text-transform: uppercase;
-  color: var(--ink3);
-  transition: color .4s;
-  white-space: nowrap;
 }
 
 /* ═══════════════════════════════════════════════════
-   HERO
+   HEADER
+═══════════════════════════════════════════════════ */
+header {
+  background: var(--white);
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--medium-gray);
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: var(--light-gray);
+  padding: 8px;
+}
+
+.logo-text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--primary-green);
+  text-align: center;
+  max-width: 90px;
+}
+
+/* ═══════════════════════════════════════════════════
+   HERO SECTION
 ═══════════════════════════════════════════════════ */
 .hero {
-  background: var(--hero-bg);
-  position: relative; overflow: hidden;
-  transition: background .4s;
+  background: var(--primary-green);
   background-image: 
     linear-gradient(135deg, rgba(27,166,70,.08) 0%, transparent 50%),
     linear-gradient(-135deg, rgba(13,94,44,.08) 0%, transparent 50%);
-}
-
-/* Subtle grain */
-.hero::after {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' result='noise'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23000000' opacity='0.05' filter='url(%23n)'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 1; opacity: .7;
-}
-
-/* Ambient glow — only in dark mode */
-.hero-glow {
-  position: absolute; pointer-events: none; z-index: 0;
-  top: -150px; right: -150px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(27,166,70,.12), transparent 60%);
-  opacity: 0;
-  transition: opacity .6s;
-}
-[data-theme="dark"] .hero-glow { opacity: 1; }
-
-.hero-inner {
-  position: relative; z-index: 2;
-  max-width: 1000px; margin: 0 auto;
-  padding: 80px 48px 72px;
+  color: var(--white);
+  padding: 60px 48px;
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end; gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
 }
 
-/* Eyebrow */
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 10.5px; font-weight: 700;
-  letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--school-light);
-  margin-bottom: 26px;
-  opacity: 0; animation: fadeUp .7s .1s both;
-}
-.tag-dash { width: 22px; height: 1.5px; background: var(--school-light); display: block; }
-
-/* Headline */
-.hero-title {
+.hero-left h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(56px, 9vw, 104px);
-  line-height: .95;
-  letter-spacing: -1px;
-  color: var(--hero-ink);
-  margin-bottom: 4px;
-  opacity: 0; animation: fadeUp .8s .2s both;
-  transition: color .4s;
+  font-size: 56px;
   font-weight: 900;
-}
-.hero-title .school {
-  color: var(--school-light);
-}
-
-.hero-sub {
-  font-family: 'Crimson Text', serif;
-  font-size: clamp(18px, 2.5vw, 28px);
-  font-style: italic;
-  color: var(--hero-ink2);
-  margin-top: 18px; line-height: 1.6;
-  opacity: 0; animation: fadeUp .8s .35s both;
-  transition: color .4s;
-  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
 }
 
-/* Right: seal/crest */
+.hero-left p {
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
 .hero-right {
-  display: flex; flex-direction: column;
-  align-items: center; gap: 12px; flex-shrink: 0;
-  opacity: 0; animation: fadeUp .8s .45s both;
-}
-.crest-shell { position: relative; width: 140px; height: 160px; }
-.crest-ring {
-  position: absolute; inset: -12px; border-radius: 50%;
-  border: 1.5px dashed rgba(27,166,70,.25);
-  animation: spinRing 24s linear infinite;
-}
-@keyframes spinRing { to { transform: rotate(360deg); } }
-.crest-img {
-  width: 100%; height: 100%; border-radius: 12px;
-  object-fit: contain; display: block;
-  border: 2px solid rgba(255,255,255,.12);
-  box-shadow: 0 8px 32px rgba(0,0,0,.4), inset 0 0 0 1px rgba(27,166,70,.2);
-  background: linear-gradient(135deg, rgba(27,166,70,.05), rgba(13,94,44,.05));
-  padding: 8px;
-}
-.hero-location {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--hero-ink3);
-  text-align: center;
-  transition: color .4s;
-}
-
-/* Bottom strip */
-.hero-strip {
-  position: relative; z-index: 2;
-  border-top: 1px solid var(--hero-border);
-  max-width: 1000px; margin: 0 auto;
-  padding: 16px 48px;
-  display: flex; gap: 36px; flex-wrap: wrap;
-  transition: border-color .4s;
-}
-.strip-item {
-  font-size: 11px; font-weight: 500;
-  letter-spacing: .5px;
-  color: var(--hero-ink3);
-  display: flex; align-items: center; gap: 7px;
-  transition: color .4s;
-}
-.sdot { width: 5px; height: 5px; border-radius: 50%; background: var(--school-light); }
-
-/* ═══════════════════════════════════════════════════
-   PAGE BODY
-═══════════════════════════════════════════════════ */
-.page-body {
-  max-width: 580px; margin: 0 auto;
-  padding: 60px 24px 90px;
-}
-
-.intro { margin-bottom: 36px; }
-.intro-eye {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--school);
-  margin-bottom: 8px;
-  opacity: 0; animation: fadeUp .7s .5s both;
-}
-.intro-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 48px; letter-spacing: -0.5px;
-  color: var(--ink); line-height: 1;
-  margin-bottom: 12px;
-  opacity: 0; animation: fadeUp .7s .6s both;
-  transition: color .4s;
-  font-weight: 700;
-}
-.intro-body {
-  font-size: 15px; font-weight: 400;
-  color: var(--ink3); line-height: 1.8;
-  opacity: 0; animation: fadeUp .7s .7s both;
-  transition: color .4s;
-}
-
-/* ═══════════════════════════════════════════════════
-   CARD
-═══════════════════════════════════════════════════ */
-.card {
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
+  position: relative;
+  height: 400px;
   overflow: hidden;
-  opacity: 0; transform: translateY(28px);
-  transition: background .4s, border-color .4s, box-shadow .4s,
-              opacity .7s cubic-bezier(.25,.46,.45,.94),
-              transform .7s cubic-bezier(.25,.46,.45,.94);
-}
-.card.in { opacity: 1; transform: translateY(0); }
-.card-pad { padding: 36px 36px 32px; }
-
-/* ═══════════════════════════════════════════════════
-   FIELD LABELS
-═══════════════════════════════════════════════════ */
-.flbl {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--school);
-  margin-bottom: 14px; margin-top: 28px;
-  transition: color .4s;
-}
-.flbl:first-child { margin-top: 0; }
-
-/* ══════════════════════════════════════════════════
-   AMOUNT GRID
-═══════════════════════════════════════════════════ */
-.amt-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
-
-.amt-btn {
-  position: relative; overflow: hidden;
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 6px 12px;
-  background: var(--surface2);
-  cursor: pointer; text-align: center;
-  transition: border-color .25s, background .25s, box-shadow .25s;
-}
-.amt-btn::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 0;
-  background: var(--cta-bg);
-  transition: height .28s cubic-bezier(.25,.46,.45,.94);
-  z-index: 0;
-}
-.amt-btn:hover { border-color: var(--border2); }
-.amt-btn.sel { border-color: var(--school); }
-.amt-btn.sel::after { height: 100%; }
-
-.amt-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px; letter-spacing: -0.5px;
-  color: var(--ink); display: block; line-height: 1;
-  margin-bottom: 2px;
-  position: relative; z-index: 1;
-  transition: color .25s;
-  font-weight: 700;
-}
-.amt-cur {
-  font-size: 9px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--ink4); display: block;
-  position: relative; z-index: 1;
-  transition: color .25s;
-}
-.amt-btn.sel .amt-num,
-.amt-btn.sel .amt-cur { color: var(--cta-ink); }
-
-/* ═══════════════════════════════════════════════════
-   INPUTS
-═══════════════════════════════════════════════════ */
-.inp-wrap { position: relative; }
-.inp-prefix {
-  position: absolute; left: 14px; top: 50%;
-  transform: translateY(-50%);
-  font-size: 13px; font-weight: 700;
-  color: var(--school); pointer-events: none;
+  border-radius: 12px;
+  background: rgba(255,255,255,.1);
 }
 
-input, select, textarea {
+.hero-right img {
   width: 100%;
-  background: var(--input-bg);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 13px 14px;
-  font-size: 14px; font-weight: 500;
-  font-family: 'Inter', sans-serif;
-  color: var(--ink);
-  outline: none;
-  transition: border-color .2s, background .2s, box-shadow .2s, color .4s;
-  -webkit-appearance: none;
-}
-input::placeholder, textarea::placeholder { color: var(--ink5); font-weight: 400; }
-input:focus, select:focus, textarea:focus {
-  border-color: var(--school);
-  background: var(--input-focus);
-  box-shadow: 0 0 0 3px rgba(27,166,70,.08);
-}
-[data-theme="dark"] input:focus,
-[data-theme="dark"] select:focus,
-[data-theme="dark"] textarea:focus {
-  box-shadow: 0 0 0 3px rgba(27,166,70,.15);
-  border-color: var(--school-light);
+  height: 100%;
+  object-fit: cover;
 }
 
-#custom-in {
-  padding-left: 46px;
+/* ═══════════════════════════════════════════════════
+   MISSION SECTION
+═══════════════════════════════════════════════════ */
+.mission {
+  background: var(--white);
+  padding: 60px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  border-top: 8px solid var(--gold);
+}
+
+.mission-left h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 22px; letter-spacing: -0.5px;
-  font-weight: 700;
-}
-#custom-in::placeholder {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px; letter-spacing: 0;
-  font-weight: 400;
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  color: var(--text-dark);
 }
 
-select option { background: var(--bg2); color: var(--ink); }
-
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.ph-row { display: grid; grid-template-columns: 90px 1fr; gap: 10px; }
-
-/* ═══════════════════════════════════════════════════
-   DIVIDER
-═══════════════════════════════════════════════════ */
-.rule {
-  border: none; border-top: 1.5px solid var(--border);
-  margin: 28px 0;
-  transition: border-color .4s;
+.mission-left p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin-bottom: 24px;
 }
 
-/* ═══════════════════════════════════════════════════
-   ACCORDION
-═══════════════════════════════════════════════════ */
-.acc-wrap {
-  border: 1.5px solid var(--border);
-  border-radius: 12px; overflow: hidden;
-  transition: border-color .4s;
+.mission-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
-.acc-item { border-bottom: 1.5px solid var(--border); transition: border-color .4s; }
-.acc-item:last-child { border-bottom: none; }
 
-.acc-btn {
-  width: 100%; display: flex; align-items: center; gap: 12px;
-  padding: 14px 16px;
-  background: transparent; border: none;
-  cursor: pointer; text-align: left;
-  transition: background .15s;
+.progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.acc-btn:hover { background: var(--bg2); }
 
-.acc-ico {
-  width: 34px; height: 34px; border-radius: 9px;
-  border: 1.5px solid var(--border);
-  background: var(--bg3);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  transition: background .25s, border-color .25s;
+.progress-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
 }
-.acc-ico svg {
-  width: 14px; height: 14px;
-  stroke: var(--ink3); fill: none; stroke-width: 1.8;
-  transition: stroke .25s;
-}
-.acc-item.open .acc-ico { background: rgba(27,166,70,.1); border-color: rgba(27,166,70,.2); }
-.acc-item.open .acc-ico svg { stroke: var(--school); }
 
-.acc-text { flex: 1; }
-.acc-title { font-size: 13px; font-weight: 600; color: var(--ink); transition: color .4s; }
-.acc-hint { font-size: 11.5px; font-weight: 400; color: var(--ink4); margin-top: 1px; transition: color .4s; }
-
-.acc-chev {
-  width: 22px; height: 22px; border-radius: 50%;
-  border: 1.5px solid var(--border);
-  background: var(--surface2);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  transition: transform .3s cubic-bezier(.25,.46,.45,.94), background .25s, border-color .25s;
+.progress-bar {
+  width: 100%;
+  height: 24px;
+  background: var(--medium-gray);
+  border-radius: 100px;
+  overflow: hidden;
+  border: 2px solid var(--border-gray);
 }
-.acc-chev svg { width: 10px; height: 10px; stroke: var(--ink4); fill: none; stroke-width: 2.5; transition: stroke .25s; }
-.acc-item.open .acc-chev {
-  transform: rotate(180deg);
-  background: var(--cta-bg); border-color: var(--cta-bg);
-}
-.acc-item.open .acc-chev svg { stroke: var(--cta-ink); }
 
-.acc-body { max-height: 0; overflow: hidden; transition: max-height .38s cubic-bezier(.25,.46,.45,.94); }
-.acc-item.open .acc-body { max-height: 220px; }
-.acc-inner { padding: 4px 16px 16px; }
-textarea { resize: none; min-height: 80px; font-size: 13px; line-height: 1.65; }
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary-green), var(--light-green));
+  width: 49%;
+  transition: width 0.8s ease;
+}
+
+.progress-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-gray);
+  margin-top: 4px;
+}
 
 /* ═══════════════════════════════════════════════════
    CTA BUTTON
 ═══════════════════════════════════════════════════ */
-.cta {
-  width: 100%; margin-top: 28px;
-  padding: 17px 28px;
-  background: var(--cta-bg);
-  color: var(--cta-ink);
-  border: none; border-radius: 10px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px; font-weight: 700; letter-spacing: .3px;
+.cta-button {
+  display: inline-block;
+  background: var(--primary-green);
+  color: var(--white);
+  padding: 14px 36px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   cursor: pointer;
-  display: flex; align-items: center; justify-content: center; gap: 9px;
-  position: relative; overflow: hidden;
-  box-shadow: 0 4px 20px rgba(27,166,70,.25);
-  transition: background .4s, color .4s, transform .2s, box-shadow .2s;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 16px rgba(13, 94, 44, 0.3);
 }
-.cta::before {
-  content: '';
-  position: absolute; top: 0; left: -70%;
-  width: 45%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
-  transform: skewX(-18deg);
-  transition: left .5s ease;
-}
-.cta:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(27,166,70,.35); }
-.cta:hover::before { left: 130%; }
-.cta:active { transform: translateY(0); }
-.cta svg { width: 17px; height: 17px; fill: currentColor; flex-shrink: 0; }
 
-/* Trust row */
-.trust {
-  display: flex; align-items: center; justify-content: center;
-  gap: 16px; margin-top: 14px; flex-wrap: wrap;
+.cta-button:hover {
+  background: var(--secondary-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 94, 44, 0.4);
 }
-.tr-item {
-  display: flex; align-items: center; gap: 5px;
-  font-size: 11px; font-weight: 500; color: var(--ink4);
-  transition: color .4s;
-}
-.tr-item svg { width: 11px; height: 11px; stroke: var(--ink5); fill: none; stroke-width: 2; transition: stroke .4s; }
-.tr-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--border); transition: background .4s; }
 
 /* ═══════════════════════════════════════════════════
-   FEATURE PILLS
+   FEATURES GRID
 ═══════════════════════════════════════════════════ */
-.pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
-.pill {
-  display: flex; align-items: center; gap: 6px;
-  padding: 6px 13px;
-  border: 1.5px solid var(--border);
-  border-radius: 100px;
-  background: var(--pill-bg);
-  font-size: 11px; font-weight: 600;
-  color: var(--ink3);
-  transition: background .4s, border-color .4s, color .4s;
+.features {
+  background: var(--light-gray);
+  padding: 60px 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
 }
-.pill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--school); }
+
+.feature-card {
+  background: var(--white);
+  padding: 48px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--primary-green);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+
+.feature-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-gray);
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.feature-button {
+  background: var(--primary-green);
+  color: var(--white);
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.feature-button:hover {
+  background: var(--secondary-green);
+}
+
+/* ═══════════════════════════════════════════════════
+   HALL OF FAME SECTION
+═══════════════════════════════════════════════════ */
+.hall-of-fame {
+  background: var(--gold-light);
+  background: linear-gradient(135deg, var(--gold), #E8C547);
+  padding: 60px 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.fame-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fame-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.fame-item {
+  font-size: 14px;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+.fame-item strong {
+  display: block;
+  font-weight: 700;
+}
+
+.fame-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-green);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
 
 /* ═══════════════════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════════════════ */
 footer {
-  background: var(--hero-bg);
-  padding: 56px 48px 40px;
-  position: relative;
-  transition: background .4s;
-  background-image: 
-    linear-gradient(135deg, rgba(27,166,70,.08) 0%, transparent 50%),
-    linear-gradient(-135deg, rgba(13,94,44,.08) 0%, transparent 50%);
+  background: var(--primary-green);
+  color: var(--white);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
 }
-footer::before {
-  content: '';
-  position: absolute; top: 0; left: 48px; right: 48px; height: 1.5px;
-  background: linear-gradient(90deg, transparent, var(--school), transparent);
-  opacity: .3;
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.foot-inner {
-  max-width: 580px; margin: 0 auto;
-  display: flex; flex-direction: column; align-items: center;
-  gap: 14px; text-align: center;
-}
-.foot-logo { display: flex; align-items: center; gap: 12px; }
-.foot-logo-img {
-  width: 60px; height: 60px; border-radius: 8px; object-fit: contain;
-  border: 1.5px solid rgba(27,166,70,.2);
-  background: linear-gradient(135deg, rgba(27,166,70,.1), rgba(13,94,44,.1));
-  padding: 4px;
-}
-.foot-name {
+
+.footer-left h4 {
   font-family: 'Playfair Display', serif;
-  font-size: 26px; letter-spacing: -0.5px;
-  color: var(--hero-ink);
-  transition: color .4s;
+  font-size: 28px;
   font-weight: 700;
 }
-.foot-tag { font-size: 12px; font-weight: 400; color: var(--hero-ink2); line-height: 1.7; transition: color .4s; }
-.foot-copy {
-  font-size: 10px; font-weight: 400;
-  letter-spacing: 1px; text-transform: uppercase;
-  color: var(--hero-ink3); margin-top: 6px;
-  transition: color .4s;
+
+.footer-contact {
+  font-size: 13px;
+  line-height: 1.8;
+  opacity: 0.9;
 }
 
-/* ═══════════════════════════════════════════════════
-   TOAST
-═══════════════════════════════════════════════════ */
-.toast {
-  position: fixed; bottom: 28px; left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  opacity: 0;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 100px;
-  padding: 12px 22px;
-  display: flex; align-items: center; gap: 9px;
-  font-size: 13px; font-weight: 500; color: var(--ink);
-  box-shadow: var(--shadow-lg);
-  z-index: 9999;
-  pointer-events: none; white-space: nowrap;
-  transition: opacity .35s cubic-bezier(.25,.46,.45,.94),
-              transform .35s cubic-bezier(.25,.46,.45,.94),
-              background .4s, border-color .4s, color .4s;
-}
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-.toast svg { width: 14px; height: 14px; stroke: var(--school-light); fill: none; stroke-width: 2.2; flex-shrink: 0; }
-.toast.err { border-color: #c0392b; }
-.toast.err svg { stroke: #e74c3c; }
-
-/* optgroup labels */
-optgroup { color: var(--ink4); font-size: 11px; font-weight: 700; letter-spacing: 1px; }
-
-/* ═══════════════════════════════════════════════════
-   ANIMATIONS
-═══════════════════════════════════════════════════ */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: none; }
+.footer-contact strong {
+  display: block;
+  opacity: 1;
+  font-weight: 600;
 }
 
-/* ═══════════════════════════════════════════════════
-   COUNTRY CODE PICKER
-═══════════════════════════════════════════════════ */
-.cc-wrap {
-  position: relative;
+.social-icons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
 }
-.cc-trigger {
-  width: 100%;
-  display: flex; align-items: center; gap: 5px;
-  background: var(--input-bg);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 13px 10px;
-  font-size: 13px; font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  color: var(--ink);
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
   cursor: pointer;
-  transition: border-color .2s, background .2s, box-shadow .2s, color .4s;
-  white-space: nowrap;
-}
-.cc-trigger:focus, .cc-trigger.open {
-  border-color: var(--school);
-  background: var(--input-focus);
-  box-shadow: 0 0 0 3px rgba(27,166,70,.08);
-  outline: none;
-}
-[data-theme="dark"] .cc-trigger:focus,
-[data-theme="dark"] .cc-trigger.open {
-  border-color: var(--school-light);
-  box-shadow: 0 0 0 3px rgba(27,166,70,.15);
-}
-.cc-trigger svg {
-  width: 10px; height: 10px;
-  margin-left: auto; flex-shrink: 0;
-  transition: transform .25s cubic-bezier(.25,.46,.45,.94);
-  stroke: var(--ink4);
-}
-.cc-trigger.open svg { transform: rotate(180deg); }
-
-.cc-menu {
-  position: absolute;
-  top: calc(100% + 6px); left: 0;
-  width: 260px;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-lg);
-  z-index: 500;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(-8px) scale(.97);
-  pointer-events: none;
-  transition: opacity .25s cubic-bezier(.25,.46,.45,.94),
-              transform .25s cubic-bezier(.25,.46,.45,.94);
-}
-.cc-menu.open {
-  opacity: 1; transform: none; pointer-events: auto;
+  transition: background 0.3s ease;
 }
 
-.cc-search-wrap {
-  display: flex; align-items: center; gap: 8px;
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--border);
+.social-icon:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
-.cc-search-wrap svg {
-  width: 14px; height: 14px;
-  stroke: var(--ink4); flex-shrink: 0;
-}
-.cc-search {
-  border: none; background: transparent;
-  font-size: 13px; font-weight: 400;
-  color: var(--ink); outline: none;
-  padding: 0; width: 100%;
-  box-shadow: none;
-}
-.cc-search::placeholder { color: var(--ink5); }
-.cc-search:focus { border: none; box-shadow: none; background: transparent; }
 
-.cc-list {
-  max-height: 220px; overflow-y: auto;
-  padding: 4px 0;
+.footer-right {
+  display: flex;
+  gap: 40px;
 }
-.cc-list::-webkit-scrollbar { width: 4px; }
-.cc-list::-webkit-scrollbar-track { background: transparent; }
-.cc-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
-.cc-opt {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 14px;
-  cursor: pointer;
-  font-size: 13px; font-weight: 500;
-  color: var(--ink);
-  transition: background .12s;
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
-.cc-opt:hover { background: var(--bg2); }
-.cc-opt.active { background: rgba(27,166,70,.1); color: var(--school); }
-.cc-opt-flag { font-size: 16px; flex-shrink: 0; width: 22px; }
-.cc-opt-name { flex: 1; font-size: 12px; color: var(--ink3); }
-.cc-opt-code { font-weight: 700; font-size: 12px; color: var(--ink2); flex-shrink: 0; }
+
+.footer-column h5 {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.footer-column img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+}
 
 /* ═══════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════ */
-@media (max-width: 640px) {
-  .hero-inner { grid-template-columns: 1fr; padding: 60px 24px 52px; gap: 28px; }
-  .hero-right { flex-direction: row; justify-content: flex-start; }
-  .hero-strip { padding: 16px 24px; gap: 20px; }
-  .amt-grid { grid-template-columns: 1fr 1fr; }
-  .row2 { grid-template-columns: 1fr; }
-  .card-pad { padding: 24px 20px 20px; }
-  footer { padding: 48px 24px 36px; }
-  footer::before { left: 24px; right: 24px; }
-  .theme-toggle { top: 16px; right: 16px; padding: 7px 12px 7px 9px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px 24px;
+  }
+
+  .logo-group {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    gap: 24px;
+  }
+
+  .hero-left h1 {
+    font-size: 36px;
+  }
+
+  .mission {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    gap: 40px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+  }
+
+  .hall-of-fame {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    gap: 32px;
+  }
+
+  .footer-right {
+    gap: 24px;
+  }
 }
 </style>
-
-<script src="https://js.paystack.co/v1/inline.js"></script>
 
 </head>
 
 <body>
 
-<!-- ══ THEME TOGGLE ══════════════════════════════════ -->
-<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-  <div class="toggle-track">
-    <div class="toggle-knob" id="knob"></div>
+<!-- ══ HEADER ══════════════════════════════════════ -->
+<header>
+  <div class="logo-group">
+    <div class="logo-item">
+      <div class="logo-img">🎓</div>
+      <div class="logo-text">APSU<br>2002 Year Group</div>
+    </div>
+    <div class="logo-item">
+      <div class="logo-img">✨</div>
+      <div class="logo-text">97th<br>Anniversary</div>
+    </div>
   </div>
-  <span class="toggle-label" id="toggleLabel">Light</span>
-</button>
+</header>
 
-<!-- ══ HERO ══════════════════════════════════════════ -->
+<!-- ══ HERO SECTION ════════════════════════════════ -->
 <section class="hero">
-  <div class="hero-glow"></div>
-
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-tag">
-        <span class="tag-dash"></span>
-        APSU 2002 · Fundraiser Campaign
-      </div>
-      <h1 class="hero-title">
-        Empower Our<br>
-        <span class="school">Legacy</span>
-      </h1>
-      <p class="hero-sub">Supporting excellence in education<br>at St. Augustine's, Cape Coast.</p>
-    </div>
-
-    <div class="hero-right">
-      <div class="crest-shell">
-        <div class="crest-ring"></div>
-        <svg class="crest-img" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-          <!-- Green background shape -->
-          <circle cx="200" cy="200" r="180" fill="#1BA646"/>
-          <!-- White oval center -->
-          <ellipse cx="200" cy="200" r="100" ry="120" fill="#FFFFFF"/>
-          <!-- School crest/shield -->
-          <rect x="140" y="120" width="120" height="140" rx="8" fill="#FFFFFF" stroke="#333" stroke-width="2"/>
-          <!-- Coat of arms simplified -->
-          <circle cx="200" cy="160" r="25" fill="#1BA646" stroke="#333" stroke-width="1.5"/>
-          <polygon points="200,165 195,175 205,175" fill="#FFD700"/>
-          <polygon points="200,155 195,145 205,145" fill="#FFD700"/>
-          <polygon points="185,160 175,155 175,165" fill="#FFD700"/>
-          <polygon points="215,160 225,155 225,165" fill="#FFD700"/>
-          <!-- Cross in center -->
-          <line x1="200" y1="145" x2="200" y2="175" stroke="#333" stroke-width="2"/>
-          <line x1="185" y1="160" x2="215" y2="160" stroke="#333" stroke-width="2"/>
-          <!-- Text: 90th -->
-          <text x="200" y="220" font-size="48" font-weight="bold" text-anchor="middle" fill="#1BA646" font-family="serif">90th</text>
-          <!-- Year indicator -->
-          <text x="200" y="250" font-size="16" text-anchor="middle" fill="#1BA646" font-family="serif">ST. AUGUSTINE'S</text>
-        </svg>
-      </div>
-      <span class="hero-location">Cape Coast, Ghana</span>
-    </div>
+  <div class="hero-left">
+    <h1>97 Years of Excellence:<br>Help APSU 2002 Secure a<br>Brighter Future for<br>St. Augustine's College.</h1>
+    <p>Our mission is to uphold the legacy of St. Augustine's College and secure a brighter future for generations to come.</p>
+    <button class="cta-button" onclick="scrollToDonate()">Donate Now</button>
   </div>
-
-  <div class="hero-strip">
-    <div class="strip-item"><div class="sdot"></div>Class of 2002</div>
-    <div class="strip-item"><div class="sdot"></div>Excellence in Education</div>
-    <div class="strip-item"><div class="sdot"></div>United Impact</div>
+  <div class="hero-right">
+    <img src="https://via.placeholder.com/500x400/0D5E2C/FFFFFF?text=St+Augustine's+Students" alt="St. Augustine's students">
   </div>
 </section>
 
-<!-- ══ BODY ══════════════════════════════════════════ -->
-<main class="page-body">
-
-  <div class="intro">
-    <div class="intro-eye">Make Your Contribution</div>
-    <h2 class="intro-title">Support the Cause</h2>
-    <p class="intro-body">Two decades strong. Your generosity sustains the spirit of St. Augustine's and empowers the next generation of leaders in Cape Coast and beyond.</p>
+<!-- ══ MISSION SECTION ════════════════════════════ -->
+<section class="mission">
+  <div class="mission-left">
+    <h2>Supporting our Alma Mater:<br>A Golden Opportunity</h2>
+    <p>Our mission statement oodhnes and help APSU 2002 secure a Brighter future for St. Augustine's College.</p>
   </div>
-
-  <div class="card" id="mainCard">
-    <div class="card-pad">
-
-      <!-- AMOUNT -->
-      <div class="flbl">Select Amount</div>
-      <div class="amt-grid">
-        <div class="amt-btn sel" onclick="setAmt(50,this)">
-          <span class="amt-num">50</span><span class="amt-cur">GH₵</span>
-        </div>
-        <div class="amt-btn" onclick="setAmt(100,this)">
-          <span class="amt-num">100</span><span class="amt-cur">GH₵</span>
-        </div>
-        <div class="amt-btn" onclick="setAmt(250,this)">
-          <span class="amt-num">250</span><span class="amt-cur">GH₵</span>
-        </div>
-        <div class="amt-btn" onclick="setAmt(500,this)">
-          <span class="amt-num">500</span><span class="amt-cur">GH₵</span>
-        </div>
+  <div class="mission-right">
+    <div class="progress-item">
+      <div class="progress-label">Campaign Total</div>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
       </div>
-
-      <!-- CUSTOM -->
-      <div class="flbl" style="margin-top:18px;">Custom Amount</div>
-      <div class="inp-wrap">
-        <span class="inp-prefix">GH₵</span>
-        <input type="number" id="custom-in" placeholder="Enter amount" oninput="onCustom(this)">
-      </div>
-
-      <hr class="rule">
-
-      <!-- DETAILS -->
-      <div class="flbl">Your Details</div>
-      <div class="row2" style="margin-bottom:10px;">
-        <input type="text" id="fullname" placeholder="Full Name">
-        <input type="email" id="email" placeholder="Email Address">
-      </div>
-      <div class="row2">
-        <!-- Custom country-code picker -->
-        <div class="ph-row">
-          <div class="cc-wrap" id="ccWrap">
-            <button type="button" class="cc-trigger" id="ccTrigger" onclick="toggleCCMenu()">
-              <span id="ccFlag">🇬🇭</span>
-              <span id="ccCode">+233</span>
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,4 6,8 10,4"/></svg>
-            </button>
-            <div class="cc-menu" id="ccMenu">
-              <div class="cc-search-wrap">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="4.5"/><path d="M10.5 10.5l3 3"/></svg>
-                <input type="text" class="cc-search" id="ccSearch" placeholder="Search country…" oninput="filterCC(this.value)" onclick="event.stopPropagation()">
-              </div>
-              <div class="cc-list" id="ccList"></div>
-            </div>
-          </div>
-          <input type="tel" id="phone" placeholder="Phone Number">
-        </div>
-        <select id="batch">
-          <option value="">Batch / Class Year (Optional)</option>
-          <option value="class-2002">Class of 2002</option>
-          <option value="class-2001">Class of 2001</option>
-          <option value="class-2003">Class of 2003</option>
-          <optgroup label="── Other Years ──">
-            <option value="class-2000">Class of 2000</option>
-            <option value="class-1999">Class of 1999</option>
-            <option value="class-1998">Class of 1998</option>
-            <option value="class-2004">Class of 2004</option>
-            <option value="class-2005">Class of 2005</option>
-          </optgroup>
-        </select>
-      </div>
-
-      <hr class="rule">
-
-      <!-- PURPOSE OF DONATION -->
-      <div class="flbl">Purpose of Donation</div>
-      <div class="acc-wrap">
-
-        <div class="acc-item" id="a1">
-          <button class="acc-btn" onclick="togAcc('a1')">
-            <div class="acc-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M2 12h20"/></svg>
-            </div>
-            <div class="acc-text">
-              <div class="acc-title">Scholarship Fund</div>
-              <div class="acc-hint">Support deserving students</div>
-            </div>
-            <div class="acc-chev">
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor"><polyline points="10,4 6,8 2,4"/></svg>
-            </div>
-          </button>
-          <div class="acc-body">
-            <div class="acc-inner">
-              <textarea id="scholarship-note" placeholder="Optional message for scholarship fund…"></textarea>
-            </div>
-          </div>
-        </div>
-
-        <div class="acc-item" id="a2">
-          <button class="acc-btn" onclick="togAcc('a2')">
-            <div class="acc-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M2 12h20"/></svg>
-            </div>
-            <div class="acc-text">
-              <div class="acc-title">Infrastructure Development</div>
-              <div class="acc-hint">Improve school facilities</div>
-            </div>
-            <div class="acc-chev">
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor"><polyline points="10,4 6,8 2,4"/></svg>
-            </div>
-          </button>
-          <div class="acc-body">
-            <div class="acc-inner">
-              <textarea id="infrastructure-note" placeholder="Optional message for infrastructure…"></textarea>
-            </div>
-          </div>
-        </div>
-
-        <div class="acc-item" id="a3">
-          <button class="acc-btn" onclick="togAcc('a3')">
-            <div class="acc-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M2 12h20"/></svg>
-            </div>
-            <div class="acc-text">
-              <div class="acc-title">General Contribution</div>
-              <div class="acc-hint">Flexible support for school needs</div>
-            </div>
-            <div class="acc-chev">
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor"><polyline points="10,4 6,8 2,4"/></svg>
-            </div>
-          </button>
-          <div class="acc-body">
-            <div class="acc-inner">
-              <textarea id="general-note" placeholder="Optional message for general fund…"></textarea>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- CTA -->
-      <button class="cta" onclick="initiatePayment()">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
-        Donate Now
-      </button>
-
-      <div class="trust">
-        <div class="tr-item">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M13.5 2 6 10l-3-3"/></svg>
-          Secure Payment
-        </div>
-        <div class="tr-sep"></div>
-        <div class="tr-item">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M13.5 2 6 10l-3-3"/></svg>
-          Verified Charity
-        </div>
-      </div>
-
+      <div class="progress-text">$245,000 / $500,000 raised</div>
+      <div class="progress-text">49% Complete</div>
     </div>
   </div>
+</section>
 
-</main>
+<!-- ══ FEATURES GRID ══════════════════════════════ -->
+<section class="features">
+  <div class="feature-card">
+    <div class="feature-icon">🏫</div>
+    <h3>School Infrastructure Upgrades</h3>
+    <p>Our law quality mesoitours will view the emiless and welcomement transport school infrastructure upgrades.</p>
+    <button class="feature-button">Support</button>
+  </div>
+  
+  <div class="feature-card">
+    <div class="feature-icon">🎓</div>
+    <h3>Scholarships for Students</h3>
+    <p>Scholarships for Students awards for students, tisusurus aring esom eduation andvant onsit scholorship.</p>
+    <button class="feature-button">Support</button>
+  </div>
+  
+  <div class="feature-card">
+    <div class="feature-icon">🏢</div>
+    <h3>Campus Modernization</h3>
+    <p>Campus Modernization are marmoscyew campus modernization, eveclosios-heating indemtates, and terms.</p>
+    <button class="feature-button">Support</button>
+  </div>
+</section>
 
-<!-- ══ FOOTER ══════════════════════════════════════ -->
+<!-- ══ HALL OF FAME ═══════════════════════════════ -->
+<section class="hall-of-fame">
+  <div class="fame-section">
+    <h3>Hall of Fame</h3>
+    <div class="fame-subtitle">Major Donors:</div>
+    <div class="fame-item">
+      <strong>St. Augustine's Collegemen</strong>
+      John Bevers
+    </div>
+  </div>
+  
+  <div class="fame-section">
+    <div class="fame-subtitle">Prayer Donors:</div>
+    <div class="fame-item">
+      <strong>Alvaran Eorom</strong>
+    </div>
+    <div class="fame-item">
+      <strong>St. Augustine's Colleagues</strong>
+    </div>
+  </div>
+  
+  <div class="fame-section">
+    <h3>Upcoming Batch Reunion</h3>
+    <div class="fame-item">
+      Saturday, Batch Reunion 67 2022 – 12:00 AM<br>
+      Datch-Donors for St. Augustine's 11:00 PM
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════ -->
 <footer>
-  <div class="foot-inner">
-    <div class="foot-logo">
-      <svg class="foot-logo-img" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <!-- Green background shape -->
-        <circle cx="200" cy="200" r="180" fill="#1BA646"/>
-        <!-- White oval center -->
-        <ellipse cx="200" cy="200" r="100" ry="120" fill="#FFFFFF"/>
-        <!-- School crest/shield -->
-        <rect x="140" y="120" width="120" height="140" rx="8" fill="#FFFFFF" stroke="#333" stroke-width="2"/>
-        <!-- Coat of arms simplified -->
-        <circle cx="200" cy="160" r="25" fill="#1BA646" stroke="#333" stroke-width="1.5"/>
-        <polygon points="200,165 195,175 205,175" fill="#FFD700"/>
-        <polygon points="200,155 195,145 205,145" fill="#FFD700"/>
-        <polygon points="185,160 175,155 175,165" fill="#FFD700"/>
-        <polygon points="215,160 225,155 225,165" fill="#FFD700"/>
-        <!-- Cross in center -->
-        <line x1="200" y1="145" x2="200" y2="175" stroke="#333" stroke-width="2"/>
-        <line x1="185" y1="160" x2="215" y2="160" stroke="#333" stroke-width="2"/>
-      </svg>
-      <div>
-        <div class="foot-name">APSU 2002</div>
-      </div>
+  <div class="footer-left">
+    <h4>APSU 2002</h4>
+    <div class="footer-contact">
+      <strong>Phoner St. Augustine's College</strong>
+      F. (371) 375-7990<br>
+      www.apsu 2002.com
     </div>
-    <div class="foot-tag">St. Augustine's Past Students Union<br>Cape Coast, Ghana</div>
-    <div class="foot-copy">Supporting Education Since 2002</div>
+    <div class="social-icons">
+      <div class="social-icon">f</div>
+      <div class="social-icon">𝕏</div>
+      <div class="social-icon">▶</div>
+      <div class="social-icon">📷</div>
+    </div>
+  </div>
+  
+  <div class="footer-right">
+    <div class="footer-column">
+      <h5>School Crest</h5>
+      <img src="https://via.placeholder.com/60x60/1BA646/FFFFFF?text=Crest" alt="School crest 1">
+    </div>
+    <div class="footer-column">
+      <h5>90th Badge</h5>
+      <img src="https://via.placeholder.com/60x60/1BA646/FFFFFF?text=Badge" alt="90th Badge">
+    </div>
   </div>
 </footer>
 
-<!-- ══ TOAST ══════════════════════════════════════ -->
-<div class="toast" id="toast">
-  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M13.5 2 6 10l-3-3"/></svg>
-  <span id="toastMsg"></span>
-</div>
-
-<!-- ══ SCRIPTS ══════════════════════════════════════ -->
 <script>
-// ═════════════════════════════════════════════════
-// THEME TOGGLE
-// ═════════════════════════════════════════════════
-function toggleTheme() {
-  const html = document.documentElement;
-  const current = html.getAttribute('data-theme');
-  const next = current === 'light' ? 'dark' : 'light';
-  html.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  document.getElementById('toggleLabel').textContent = next === 'dark' ? 'Dark' : 'Light';
-}
-
-// Load saved theme
-if (localStorage.getItem('theme') === 'dark') {
-  document.documentElement.setAttribute('data-theme', 'dark');
-  document.getElementById('toggleLabel').textContent = 'Dark';
-}
-
-// ═════════════════════════════════════════════════
-// AMOUNT SELECTION
-// ═════════════════════════════════════════════════
-let selectedAmount = 50;
-
-function setAmt(amt, el) {
-  document.querySelectorAll('.amt-btn').forEach(btn => btn.classList.remove('sel'));
-  el.classList.add('sel');
-  selectedAmount = amt;
-  document.getElementById('custom-in').value = '';
-}
-
-function onCustom(el) {
-  const val = el.value;
-  if (val) {
-    selectedAmount = parseFloat(val) || 0;
-    document.querySelectorAll('.amt-btn').forEach(btn => btn.classList.remove('sel'));
-  } else {
-    document.querySelectorAll('.amt-btn')[0].classList.add('sel');
-    selectedAmount = 50;
+function scrollToDonate() {
+  // Scroll to donation form if it exists
+  const donateElement = document.getElementById('mainCard');
+  if (donateElement) {
+    donateElement.scrollIntoView({ behavior: 'smooth' });
   }
 }
-
-// ═════════════════════════════════════════════════
-// ACCORDION
-// ═════════════════════════════════════════════════
-function togAcc(id) {
-  const item = document.getElementById(id);
-  item.classList.toggle('open');
-}
-
-// ═════════════════════════════════════════════════
-// COUNTRY CODE PICKER
-// ═════════════════════════════════════════════════
-const countries = [
-  {name:'Ghana',flag:'🇬🇭',code:'+233'},
-  {name:'United States',flag:'🇺🇸',code:'+1'},
-  {name:'United Kingdom',flag:'🇬🇧',code:'+44'},
-  {name:'Canada',flag:'🇨🇦',code:'+1'},
-  {name:'Australia',flag:'🇦🇺',code:'+61'},
-  {name:'Nigeria',flag:'🇳🇬',code:'+234'},
-  {name:'Kenya',flag:'🇰🇪',code:'+254'},
-  {name:'South Africa',flag:'🇿🇦',code:'+27'},
-  {name:'Germany',flag:'🇩🇪',code:'+49'},
-  {name:'France',flag:'🇫🇷',code:'+33'},
-];
-
-function initCC() {
-  const list = document.getElementById('ccList');
-  countries.forEach(c => {
-    const opt = document.createElement('div');
-    opt.className = 'cc-opt' + (c.code === '+233' ? ' active' : '');
-    opt.onclick = () => selectCC(c);
-    opt.innerHTML = `<span class="cc-opt-flag">${c.flag}</span><span class="cc-opt-name">${c.name}</span><span class="cc-opt-code">${c.code}</span>`;
-    list.appendChild(opt);
-  });
-}
-
-function toggleCCMenu() {
-  const menu = document.getElementById('ccMenu');
-  const trigger = document.getElementById('ccTrigger');
-  menu.classList.toggle('open');
-  trigger.classList.toggle('open');
-  if (menu.classList.contains('open')) {
-    document.getElementById('ccSearch').focus();
-  }
-}
-
-function selectCC(c) {
-  document.getElementById('ccFlag').textContent = c.flag;
-  document.getElementById('ccCode').textContent = c.code;
-  document.querySelectorAll('.cc-opt').forEach(opt => opt.classList.remove('active'));
-  event.target.closest('.cc-opt').classList.add('active');
-  document.getElementById('ccMenu').classList.remove('open');
-  document.getElementById('ccTrigger').classList.remove('open');
-}
-
-function filterCC(val) {
-  const opts = document.querySelectorAll('.cc-opt');
-  opts.forEach(opt => {
-    const name = opt.querySelector('.cc-opt-name').textContent.toLowerCase();
-    opt.style.display = name.includes(val.toLowerCase()) ? 'flex' : 'none';
-  });
-}
-
-// Close menu on outside click
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('#ccWrap')) {
-    document.getElementById('ccMenu').classList.remove('open');
-    document.getElementById('ccTrigger').classList.remove('open');
-  }
-});
-
-initCC();
-
-// ═════════════════════════════════════════════════
-// PAYMENT INTEGRATION
-// ═════════════════════════════════════════════════
-function initiatePayment() {
-  const fullname = document.getElementById('fullname').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-
-  if (!fullname || !email || !phone) {
-    showToast('Please fill in all required fields', true);
-    return;
-  }
-
-  if (selectedAmount <= 0) {
-    showToast('Please select a valid amount', true);
-    return;
-  }
-
-  const purpose = getPurpose();
-  const handler = PaystackPop.setup({
-    key: 'pk_test_YOUR_PAYSTACK_KEY_HERE', // Replace with your Paystack key
-    email: email,
-    amount: selectedAmount * 100, // Paystack uses cents
-    ref: 'APSU' + Math.floor(Math.random() * 1000000000 + 1),
-    onClose: function() {
-      showToast('Payment window closed', true);
-    },
-    onSuccess: function(response) {
-      showToast(`Donation of GH₵${selectedAmount} completed! Thank you!`);
-      resetForm();
-    }
-  });
-  handler.openIframe();
-}
-
-function getPurpose() {
-  const items = document.querySelectorAll('.acc-item.open');
-  if (items.length > 0) {
-    return items[0].querySelector('.acc-title').textContent;
-  }
-  return 'General Contribution';
-}
-
-function showToast(msg, isErr = false) {
-  const toast = document.getElementById('toast');
-  const msgEl = document.getElementById('toastMsg');
-  msgEl.textContent = msg;
-  toast.classList.toggle('err', isErr);
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 4000);
-}
-
-function resetForm() {
-  document.getElementById('fullname').value = '';
-  document.getElementById('email').value = '';
-  document.getElementById('phone').value = '';
-  document.getElementById('batch').value = '';
-  document.querySelectorAll('.acc-item').forEach(item => item.classList.remove('open'));
-  document.querySelectorAll('.amt-btn').forEach((btn, i) => {
-    btn.classList.toggle('sel', i === 0);
-  });
-  selectedAmount = 50;
-}
-
-// Trigger card animation on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.card').forEach(card => observer.observe(card));
 </script>
 
 </body>
