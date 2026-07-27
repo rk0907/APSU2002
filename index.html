@@ -349,15 +349,44 @@
           <input type="tel" id="phone" name="phone" placeholder="+233 20 000 0000">
         </div>
 
-        <div class="form-group">
-          <label for="yearGroup">Year Group *</label>
-          <select id="yearGroup" name="yearGroup" required>
-            <option value="" disabled selected>Select your year group</option>
-          </select>
-        </div>
-        <div class="form-group">
+   <!-- ARE YOU AN APSUNIAN? -->
+<div class="form-group">
+  <label>Are you an APSUnian? *</label>
+  <div style="display: flex; gap: 12px; margin-top: 8px;">
+    <button type="button" class="amount-btn" id="apsuYes" style="flex: 1;">Yes</button>
+    <button type="button" class="amount-btn" id="apsuNo" style="flex: 1;">No</button>
+  </div>
+</div>
+
+<!-- YEAR GROUP (only if Yes) -->
+<div class="form-group" id="yearGroupSection" style="display: none;">
+  <label for="yearGroup">Year Group *</label>
+  <select id="yearGroup" name="yearGroup">
+    <option value="" disabled selected>Select your year group</option>
+  </select>
+</div>
+
+<!-- CLASS (only if Year Group = 2002) -->
+<div class="form-group" id="classSection" style="display: none;">
+  <label for="classGroup">Class *</label>
+  <select id="classGroup" name="classGroup">
+    <option value="" disabled selected>Select your class</option>
+    <option value="Art 1">Art 1</option>
+    <option value="Art 2">Art 2</option>
+    <option value="Business 1">Business 1</option>
+    <option value="Business 2">Business 2</option>
+    <option value="Science 1">Science 1</option>
+    <option value="Science 2">Science 2</option>
+    <option value="Science 3">Science 3</option>
+    <option value="Science 4">Science 4</option>
+    <option value="Science 5">Science 5</option>
+  </select>
+</div>
+
+<!-- HOUSE (only if Yes) -->
+<div class="form-group" id="houseSection" style="display: none;">
   <label for="house">House *</label>
-  <select id="house" name="house" required>
+  <select id="house" name="house">
     <option value="" disabled selected>Select your house</option>
     <option value="St. John">St. John's</option>
     <option value="St. Peter">St. Peter's</option>
@@ -372,79 +401,143 @@
     <option value="Nduom">Nduom</option>
   </select>
 </div>
-
         <button type="submit" class="donate-btn">Donate Now</button>
       </form>
     </div>
   </section>
 
-  <script>
-  // Wait until the page is fully loaded
-  document.addEventListener('DOMContentLoaded', function() {
+<script>
+document.addEventListener('DOMContentLoaded', function() {
 
-    // Generate Year Group dropdown (1984 – 2026)
-    const yearSelect = document.getElementById('yearGroup');
-    if (yearSelect) {
-      for (let year = 2026; year >= 1984; year--) {
-        const option = document.createElement('option');
-        option.value = year;
-        option.textContent = year;
-        yearSelect.appendChild(option);
-      }
+  // Generate Year Groups
+  const yearSelect = document.getElementById('yearGroup');
+  for (let year = 2026; year >= 1984; year--) {
+    const option = document.createElement('option');
+    option.value = year;
+    option.textContent = year;
+    yearSelect.appendChild(option);
+  }
+
+  // Amount buttons
+  let selectedAmount = 100;
+  document.querySelectorAll('.amount-btn').forEach(btn => {
+    if (btn.id === 'apsuYes' || btn.id === 'apsuNo') return;
+
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.amount-btn').forEach(b => {
+        if (b.id !== 'apsuYes' && b.id !== 'apsuNo') b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      selectedAmount = parseInt(btn.dataset.amount);
+      document.getElementById('customAmount').value = '';
+    });
+  });
+
+  document.getElementById('customAmount').addEventListener('input', function() {
+    if (this.value) {
+      document.querySelectorAll('.amount-btn').forEach(b => {
+        if (b.id !== 'apsuYes' && b.id !== 'apsuNo') b.classList.remove('active');
+      });
+      selectedAmount = null;
+    }
+  });
+
+  // Sections
+  const yearGroupSection = document.getElementById('yearGroupSection');
+  const classSection     = document.getElementById('classSection');
+  const houseSection     = document.getElementById('houseSection');
+  const apsuYes          = document.getElementById('apsuYes');
+  const apsuNo           = document.getElementById('apsuNo');
+
+  // Yes → show Year Group + House
+  apsuYes.addEventListener('click', () => {
+    apsuYes.classList.add('active');
+    apsuNo.classList.remove('active');
+    yearGroupSection.style.display = 'block';
+    houseSection.style.display = 'block';
+    classSection.style.display = 'none';
+    yearSelect.value = '';
+    document.getElementById('classGroup').value = '';
+  });
+
+  // No → hide everything
+  apsuNo.addEventListener('click', () => {
+    apsuNo.classList.add('active');
+    apsuYes.classList.remove('active');
+    yearGroupSection.style.display = 'none';
+    classSection.style.display = 'none';
+    houseSection.style.display = 'none';
+    yearSelect.value = '';
+    document.getElementById('classGroup').value = '';
+    document.getElementById('house').value = '';
+  });
+
+  // Show Class only when 2002 is selected
+  yearSelect.addEventListener('change', function() {
+    if (this.value === '2002') {
+      classSection.style.display = 'block';
+    } else {
+      classSection.style.display = 'none';
+      document.getElementById('classGroup').value = '';
+    }
+  });
+
+  // Form submission
+  window.handleDonate = function(e) {
+    e.preventDefault();
+
+    const name         = document.getElementById('name').value.trim();
+    const email        = document.getElementById('email').value.trim();
+    const phone        = document.getElementById('phone').value.trim();
+    const customAmount = document.getElementById('customAmount').value;
+    const isApsunian   = apsuYes.classList.contains('active');
+    const yearGroup    = yearSelect.value;
+    const classGroup   = document.getElementById('classGroup').value;
+    const house        = document.getElementById('house').value;
+
+    let amount = selectedAmount;
+    if (customAmount) amount = parseFloat(customAmount);
+
+    if (!amount || amount < 10) {
+      alert('Please select or enter a valid amount');
+      return;
     }
 
-    // Amount button selection
-    let selectedAmount = 100;
+    if (!apsuYes.classList.contains('active') && !apsuNo.classList.contains('active')) {
+      alert('Please indicate if you are an APSUnian');
+      return;
+    }
 
-    document.querySelectorAll('.amount-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        selectedAmount = parseInt(btn.dataset.amount);
-        document.getElementById('customAmount').value = '';
-      });
-    });
-
-    document.getElementById('customAmount').addEventListener('input', function() {
-      if (this.value) {
-        document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-        selectedAmount = null;
-      }
-    });
-
-    // Form submission
-    window.handleDonate = function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const yearGroup = document.getElementById('yearGroup').value;
-      const phone = document.getElementById('phone').value.trim();
-      const customAmount = document.getElementById('customAmount').value;
-      const house = document.getElementById('house').value;
-
-      let amount = selectedAmount;
-      if (customAmount) amount = parseFloat(customAmount);
-
-      if (!amount || amount < 10) {
-        alert('Please select or enter a valid amount');
-        return;
-      }
-
+    if (isApsunian) {
       if (!yearGroup) {
         alert('Please select your year group');
         return;
       }
-
+      if (yearGroup === '2002' && !classGroup) {
+        alert('Please select your class');
+        return;
+      }
       if (!house) {
         alert('Please select your house');
         return;
       }
+    }
 
-      console.log({ name, email, yearGroup, house, phone, amount });
-      alert(`Thank you ${name}!\n\nYear Group: ${yearGroup}\nHouse: ${house}\nAmount: GH¢${Number(amount).toLocaleString()}\n\n(Connect your payment gateway here)`);
-    };
-  });
+    // Build summary
+    let summary = `Thank you ${name}!\n\n`;
+    summary += `APSUnian: ${isApsunian ? 'Yes' : 'No'}\n`;
+    if (isApsunian) {
+      summary += `Year Group: ${yearGroup}\n`;
+      if (yearGroup === '2002') summary += `Class: ${classGroup}\n`;
+      summary += `House: ${house}\n`;
+    }
+    summary += `Amount: GH¢${Number(amount).toLocaleString()}\n\n`;
+    summary += `(Connect your payment gateway here)`;
+
+    console.log({ name, email, phone, isApsunian, yearGroup, classGroup, house, amount });
+    alert(summary);
+  };
+});
 </script>
 </body>
 </html>
