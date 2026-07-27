@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – APSU 2002 Fundraiser</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: #111;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #444;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #000; }
+
+    .page-header {
+      background: #111;
+      color: white;
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .page-header p { color: #aaa; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: -40px auto 40px;
+      padding: 0 24px;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .stat-card .number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #111;
+    }
+    .stat-card .label {
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      padding: 0 24px;
+    }
+    .section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .leaderboard {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .leader-row {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .leader-row:last-child { border-bottom: none; }
+    .rank {
+      width: 32px;
+      height: 32px;
+      background: #f5f5f5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-right: 16px;
+      flex-shrink: 0;
+    }
+    .rank.gold { background: #fef3c7; color: #b45309; }
+    .rank.silver { background: #f1f5f9; color: #475569; }
+    .rank.bronze { background: #ffedd5; color: #c2410c; }
+    .name { flex: 1; font-weight: 500; }
+    .amount { font-weight: 700; color: #111; }
+
+    .footer {
+      background: #0f0f0f;
+      color: #fff;
+      padding: 50px 24px 30px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .footer-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .footer-tagline { color: #999; font-size: 0.95rem; margin-bottom: 24px; }
+    .footer-bottom {
+      border-top: 1px solid #222;
+      padding-top: 20px;
+      color: #666;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">APSU 2002 FUNDRAISER</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#donate">Donate</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-header">
+    <h1>Fundraising Dashboard</h1>
+    <p>Live breakdown by Class and House</p>
+  </section>
+
+  <!-- Summary Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="number">GH¢48,750</div>
+      <div class="label">Total Raised</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">186</div>
+      <div class="label">Total Donors</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">9</div>
+      <div class="label">Classes Contributing</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">11</div>
+      <div class="label">Houses Contributing</div>
+    </div>
+  </div>
+
+  <!-- Leading Classes -->
+  <div class="section">
+    <h2>Leading Classes (2002)</h2>
+    <div class="leaderboard">
+      <div class="leader-row">
+        <div class="rank gold">1</div>
+        <div class="name">Science 3</div>
+        <div class="amount">GH¢9,200</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank silver">2</div>
+        <div class="name">Business 1</div>
+        <div class="amount">GH¢7,850</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank bronze">3</div>
+        <div class="name">Science 1</div>
+        <div class="amount">GH¢6,400</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">4</div>
+        <div class="name">Art 2</div>
+        <div class="amount">GH¢5,100</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">5</div>
+        <div class="name">Science 5</div>
+        <div class="amount">GH¢4,750</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">6</div>
+        <div class="name">Business 2</div>
+        <div class="amount">GH¢3,900</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">7</div>
+        <div class="name">Science 2</div>
+        <div class="amount">GH¢3,200</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">8</div>
+        <div class="name">Art 1</div>
+        <div class="amount">GH¢2,850</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">9</div>
+        <div class="name">Science 4</div>
+        <div class="amount">GH¢2,100</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leading Houses -->
+  <div class="section">
+    <h2>Leading Houses</h2>
+    <div class="leaderboard">
+      <div class="leader-row">
+        <div class="rank gold">1</div>
+        <div class="name">St. John's</div>
+        <div class="amount">GH¢8,600</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank silver">2</div>
+        <div class="name">St. Peter's</div>
+        <div class="amount">GH¢7,200</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank bronze">3</div>
+        <div class="name">Fr Glynn</div>
+        <div class="amount">GH¢6,150</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">4</div>
+        <div class="name">St George's</div>
+        <div class="amount">GH¢5,400</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">5</div>
+        <div class="name">St Luke's</div>
+        <div class="amount">GH¢4,800</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">6</div>
+        <div class="name">St Theresa's</div>
+        <div class="amount">GH¢4,100</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">7</div>
+        <div class="name">Fr Kelly</div>
+        <div class="amount">GH¢3,650</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">8</div>
+        <div class="name">St. Stephen's</div>
+        <div class="amount">GH¢3,200</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">9</div>
+        <div class="name">St Patrick's</div>
+        <div class="amount">GH¢2,750</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">10</div>
+        <div class="name">St Joseph's</div>
+        <div class="amount">GH¢2,300</div>
+      </div>
+      <div class="leader-row">
+        <div class="rank">11</div>
+        <div class="name">Nduom</div>
+        <div class="amount">GH¢1,900</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <h3 class="footer-title">APSU 2002 Fundraiser</h3>
+    <p class="footer-tagline">Building homes for our teachers</p>
+    <div class="footer-bottom">
+      © 2026 All Rights Reserved • APSU 2002 Year Group · Project BOLT
+    </div>
+  </footer>
+
+</body>
+</html>
