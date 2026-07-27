@@ -408,29 +408,36 @@
     });
 
     function handleDonate(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const yearGroup = document.getElementById('yearGroup').value;
-      const phone = document.getElementById('phone').value.trim();
-      const customAmount = document.getElementById('customAmount').value;
-      const house = document.getElementById('house').value;
+  e.preventDefault();
 
-      let amount = selectedAmount;
-      if (customAmount) amount = parseFloat(customAmount);
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const yearGroup = document.getElementById('yearGroup').value;
+  const phone = document.getElementById('phone').value.trim();
+  const customAmount = document.getElementById('customAmount').value;
+  const house = document.getElementById('house').value;
 
-      if (!amount || amount < 10) {
-        alert('Please select or enter a valid amount');
-        return;
-      }
-      if (!yearGroup) {
-  alert('Please select your year group');
-  return;
-}
+  let amount = selectedAmount;
+  if (customAmount) amount = parseFloat(customAmount);
 
-if (!house) {
-  alert('Please select your house');
-  return;
+  if (!amount || amount < 10) {
+    alert('Please select or enter a valid amount');
+    return;
+  }
+
+  if (!yearGroup) {
+    alert('Please select your year group');
+    return;
+  }
+
+  if (!house) {
+    alert('Please select your house');
+    return;
+  }
+
+  // Success
+  console.log({ name, email, yearGroup, house, phone, amount });
+  alert(`Thank you ${name}!\n\nYear Group: ${yearGroup}\nHouse: ${house}\nAmount: GH¢${Number(amount).toLocaleString()}\n\n(Connect your payment gateway here)`);
 }
 
 // Update the alert
