@@ -379,17 +379,22 @@
   </section>
 
   <script>
-    // Generate Year Group dropdown (1975 – 2026)
+  // Wait until the page is fully loaded
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // Generate Year Group dropdown (1984 – 2026)
     const yearSelect = document.getElementById('yearGroup');
-    for (let year = 2026; year >= 1975; year--) {
-      const option = document.createElement('option');
-      option.value = year;
-      option.textContent = year;
-      yearSelect.appendChild(option);
+    if (yearSelect) {
+      for (let year = 2026; year >= 1984; year--) {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+      }
     }
 
     // Amount button selection
-    let selectedAmount = 100; // default GH¢100
+    let selectedAmount = 100;
 
     document.querySelectorAll('.amount-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -407,47 +412,40 @@
       }
     });
 
-    function handleDonate(e) {
-  e.preventDefault();
+    // Form submission
+    window.handleDonate = function(e) {
+      e.preventDefault();
 
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const yearGroup = document.getElementById('yearGroup').value;
-  const phone = document.getElementById('phone').value.trim();
-  const customAmount = document.getElementById('customAmount').value;
-  const house = document.getElementById('house').value;
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const yearGroup = document.getElementById('yearGroup').value;
+      const phone = document.getElementById('phone').value.trim();
+      const customAmount = document.getElementById('customAmount').value;
+      const house = document.getElementById('house').value;
 
-  let amount = selectedAmount;
-  if (customAmount) amount = parseFloat(customAmount);
+      let amount = selectedAmount;
+      if (customAmount) amount = parseFloat(customAmount);
 
-  if (!amount || amount < 10) {
-    alert('Please select or enter a valid amount');
-    return;
-  }
-
-  if (!yearGroup) {
-    alert('Please select your year group');
-    return;
-  }
-
-  if (!house) {
-    alert('Please select your house');
-    return;
-  }
-
-  // Success
-  console.log({ name, email, yearGroup, house, phone, amount });
-  alert(`Thank you ${name}!\n\nYear Group: ${yearGroup}\nHouse: ${house}\nAmount: GH¢${Number(amount).toLocaleString()}\n\n(Connect your payment gateway here)`);
-}
-
-// Update the alert
-alert(`Thank you ${name}!\n\nYear Group: ${yearGroup}\nHouse: ${house}\nAmount: GH¢${Number(amount).toLocaleString()}\n\n(Connect your payment gateway here)`);
+      if (!amount || amount < 10) {
+        alert('Please select or enter a valid amount');
+        return;
       }
 
-      console.log({ name, email, yearGroup, phone, amount });
-      alert(`Thank you ${name}!\n\nYear Group: ${yearGroup}\nAmount: GH¢${Number(amount).toLocaleString()}\n\n(Connect your payment gateway here)`);
-    }
-  </script>
+      if (!yearGroup) {
+        alert('Please select your year group');
+        return;
+      }
+
+      if (!house) {
+        alert('Please select your house');
+        return;
+      }
+
+      console.log({ name, email, yearGroup, house, phone, amount });
+      alert(`Thank you ${name}!\n\nYear Group: ${yearGroup}\nHouse: ${house}\nAmount: GH¢${Number(amount).toLocaleString()}\n\n(Connect your payment gateway here)`);
+    };
+  });
+</script>
 </body>
 </html>
 
