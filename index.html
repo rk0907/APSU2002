@@ -266,6 +266,54 @@
     @media (max-width: 500px) {
       .amount-options { grid-template-columns: repeat(2, 1fr); }
     }
+   /* Amount buttons */
+.amount-btn {
+  background: #fff;
+  border: 1.5px solid #ddd;
+  color: #333;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.amount-btn.active {
+  background: #00843D;
+  color: white;
+  border-color: #00843D;
+}
+
+.amount-btn:hover {
+  border-color: #00843D;
+}
+
+/* Yes / No buttons when active */
+#apsuYes.active,
+#apsuNo.active {
+  background: #00843D !important;
+  color: white !important;
+  border-color: #00843D !important;
+}
+
+/* Donate Now button */
+.donate-btn {
+  background: #00843D;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.2s;
+}
+
+.donate-btn:hover {
+  background: #006B32;
+} 
   </style>
 </head>
 <body>
@@ -547,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ========== FOOTER ========== -->
 <style>
   .footer {
-    background: #0f0f0f;
+    background: #004D26;
     color: #fff;
     padding: 70px 24px 40px;
     margin-top: 100px;
@@ -582,7 +630,7 @@ document.addEventListener('DOMContentLoaded', function() {
     content: '';
     position: absolute;
     inset: 3px;
-    background: #0f0f0f;
+    background: #004D26;
     border-radius: 50%;
     z-index: 1;
   }
