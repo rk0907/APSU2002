@@ -167,13 +167,126 @@
     </p>
   </div>
 
-  <footer class="footer">
-    <h3 class="footer-title">APSU 2002 Fundraiser</h3>
-    <p class="footer-tagline">Building homes for our teachers</p>
-    <div class="footer-bottom">
-      © 2026 All Rights Reserved • APSU 2002 Year Group · Project BOLT
-    </div>
-  </footer>
+  
+<!-- ========== FOOTER ========== -->
+<style>
+  .footer {
+    background: #004D26;
+    color: #fff;
+    padding: 70px 24px 40px;
+    margin-top: 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Glowing orbit animation */
+  .logo-orbit {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 28px;
+  }
+
+  .logo-orbit::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      #ffffff 40deg,
+      transparent 80deg
+    );
+    animation: spin 3.5s linear infinite;
+  }
+
+  .logo-orbit::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: #004D26;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .logo-orbit img {
+    position: absolute;
+    inset: 12px;
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .footer-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .footer-tagline {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+
+  .footer-icons a {
+    color: #e0e0e0 ;
+    font-size: 1.25rem;
+    transition: color 0.25s, transform 0.25s;
+  }
+
+  .footer-icons a:hover {
+    color: #e0e0e0;
+    transform: translateY(-3px);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #222;
+    padding-top: 24px;
+    color: #e0e0e0;
+    font-size: 0.85rem;
+  }
+</style>
+
+<footer class="footer">
+  <!-- Animated Logo -->
+  <div class="logo-orbit">
+    <img src="PHOTO-2026-07-26-13-02-56.jpg"
+       alt="APSU Logo">
+  </div>
+
+  <h3 class="footer-title">APSU 2002 Fundraiser</h3>
+  <p class="footer-tagline">Building homes for our teachers</p>
+
+  <!-- Social Icons -->
+  <div class="footer-icons">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 All Rights Reserved 
+   
+  </div>
+</footer>
 
 </body>
 </html>
