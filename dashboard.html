@@ -150,7 +150,32 @@
       padding-top: 20px;
       color: #666;
       font-size: 0.85rem;
+    
     }
+     .marquee {
+  background: #00843D;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.marquee-track {
+  display: inline-block;
+  animation: scroll-left 25s linear infinite;
+}
+
+.marquee-track span {
+  display: inline-block;
+  padding-right: 50px;
+}
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
   </style>
 </head>
 <body>
@@ -166,6 +191,12 @@
       <li><a href="dashboard.html" class="active">Dashboard</a></li>
     </ul>
   </nav>
+  <div class="marquee">
+  <div class="marquee-track">
+    <span>APSU 2002 Fundraiser • Building homes for our teachers • Support the Teachers’ Accommodation Project • Every contribution counts • </span>
+    <span>APSU 2002 Fundraiser • Building homes for our teachers • Support the Teachers’ Accommodation Project • Every contribution counts • </span>
+  </div>
+</div>
 
   <section class="page-header">
     <h1>Fundraising Dashboard</h1>
