@@ -3,14 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About – APSU 2002 Fundraiser</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/  <style>
+  <title>About – APSU 2002 Fundraiser</
+</head>
+<body>
+  <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-     
-</head>
-<body>
+      background: #f5f5f5;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #111;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #444;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #000; }
+
+    .page-header {
+      background: #004D26;
+      color: white;
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .page-header p { color: #fff; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: -40px auto 40px;
+      padding: 0 24px;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .stat-card .number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #111;
+    }
+    .stat-card .label {
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      padding: 0 24px;
+    }
+    .section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .leaderboard {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .leader-row {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .leader-row:last-child { border-bottom: none; }
+    .rank {
+      width: 32px;
+      height: 32px;
+      background: #f5f5f5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-right: 16px;
+      flex-shrink: 0;
+    }
+    .rank.gold { background: #fef3c7; color: #b45309; }
+    .rank.silver { background: #f1f5f9; color: #475569; }
+    .rank.bronze { background: #ffedd5; color: #c2410c; }
+    .name { flex: 1; font-weight: 500; }
+    .amount { font-weight: 700; color: #111; }
+
+    .footer {
+      background: #0f0f0f;
+      color: #fff;
+      padding: 50px 24px 30px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .footer-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .footer-tagline { color: #999; font-size: 0.95rem; margin-bottom: 24px; }
+    .footer-bottom {
+      border-top: 1px solid #222;
+      padding-top: 20px;
+      color: #666;
+      font-size: 0.85rem;
+    
+    }
+     .marquee {
+  background: #00843D;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.marquee-track {
+  display: inline-block;
+  animation: scroll-left 25s linear infinite;
+}
+
+.marquee-track span {
+  display: inline-block;
+  padding-right: 50px;
+}
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+  </style>
 
   <nav class="navbar">
     <a href="#" class="logo">
