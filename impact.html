@@ -656,7 +656,7 @@
   <section class="hero">
     <div class="hero-eyebrow">
       <span></span>
-      Visual progress
+      Project Bolt · Visual progress
     </div>
     <h1>See the <span class="highlight">impact</span> we’re building</h1>
     <p class="hero-sub">
@@ -672,8 +672,8 @@
     </div>
 
     <div class="ba-wrap" id="baSlider">
-      <div class="ba-before mock-site"></div>
-      <div class="ba-after mock-render" id="baAfter"></div>
+      <div class="ba-before" style="background-image: url('Site before.jpg');"></div>
+<div class="ba-after" id="baAfter" style="background-image: url('Model.jpg');"></div>
       <span class="ba-label before">Now</span>
       <span class="ba-label after">Proposed</span>
       <div class="ba-handle" id="baHandle"></div>
@@ -706,33 +706,33 @@
   <section class="section">
     <div class="section-header">
       <h2>Project gallery</h2>
-      <p>Click any image to view larger.Will be Replace these placeholders with real site and design photos.</p>
+      <p>Click any image to view larger. Replace these placeholders with real site and design photos.</p>
     </div>
 
     <div class="gallery-grid" id="gallery">
-      <div class="gallery-item g1" data-caption="Site survey – current grounds">
-        <div class="placeholder"><i class="fas fa-map-marked-alt"></i>Site survey</div>
-        <div class="caption">Site survey – current grounds</div>
-      </div>
-      <div class="gallery-item g2" data-caption="Architectural concept – front elevation">
-        <div class="placeholder"><i class="fas fa-drafting-compass"></i>Concept design</div>
-        <div class="caption">Architectural concept – front elevation</div>
-      </div>
+      <div class="gallery-item" data-caption="Project Bolt architectural model">
+  <img src="Model.jpg" alt="Project Bolt model" style="width:100%;height:100%;object-fit:cover;display:block;">
+  <div class="caption">Project Bolt architectural model</div>
+</div>
+      <div class="gallery-item" data-caption="Front view architectural model">
+  <img src="Front view.jpg" alt="Project Bolt model" style="width:100%;height:100%;object-fit:cover;display:block;">
+  <div class="caption">Front view architectural model</div>
+</div>
       <div class="gallery-item g3" data-caption="Typical unit – living area layout">
-        <div class="placeholder"><i class="fas fa-couch"></i>Unit interior</div>
+        <img src="Interior.jpg" alt="Project Bolt model" style="width:100%;height:100%;object-fit:cover;display:block;">
         <div class="caption">Typical unit – living area layout</div>
       </div>
-      <div class="gallery-item g4" data-caption="Community courtyard concept">
-        <div class="placeholder"><i class="fas fa-tree"></i>Courtyard</div>
-        <div class="caption">Community courtyard concept</div>
+      <div class="gallery-item g4" data-caption="Courtyard concept">
+        <img src="Side view.jpg" alt="Project Bolt model" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="caption">Courtyard concept</div>
       </div>
       <div class="gallery-item g5" data-caption="Foundation works – phase 1">
-        <div class="placeholder"><i class="fas fa-hard-hat"></i>Construction</div>
+        <img src="Site aerial.jpg" alt="Project Bolt model" style="width:100%;height:100%;object-fit:cover;display:block;">
         <div class="caption">Foundation works – phase 1</div>
       </div>
-      <div class="gallery-item g6" data-caption="Teachers at APSU – the people we house">
-        <div class="placeholder"><i class="fas fa-chalkboard-teacher"></i>Our teachers</div>
-        <div class="caption">Teachers at APSU – the people we house</div>
+      <div class="gallery-item g6" data-caption="Project Team 02 ">
+        <img src="Yg.jpg" alt="Project Bolt model" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="caption">Project Team 02</div>
       </div>
     </div>
   </section>
@@ -741,7 +741,7 @@
   <section class="section">
     <div class="section-header">
       <h2>Why housing matters</h2>
-      <p>Mock stories.Will replace with quotes from teachers when you have them.</p>
+      <p>Mock stories based on the real need. Replace with quotes from teachers when you have them.</p>
     </div>
 
     <div class="stories-grid">
@@ -878,15 +878,27 @@
     const gradients = ['g1', 'g2', 'g3', 'g4', 'g5', 'g6'];
 
     function open(i) {
-      index = i;
-      const item = items[index];
-      const caption = item.dataset.caption || '';
-      lbImg.className = 'lightbox-img ' + gradients[index % gradients.length];
-      lbImg.textContent = caption;
-      lbCaption.textContent = caption;
-      lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
+  index = i;
+  const item = items[index];
+  const caption = item.dataset.caption || '';
+  const img = item.querySelector('img');
+
+  if (img) {
+    lbImg.className = 'lightbox-img';
+    lbImg.style.backgroundImage = 'url(' + img.src + ')';
+    lbImg.style.backgroundSize = 'cover';
+    lbImg.style.backgroundPosition = 'center';
+    lbImg.textContent = '';
+  } else {
+    lbImg.className = 'lightbox-img ' + gradients[index % gradients.length];
+    lbImg.style.backgroundImage = '';
+    lbImg.textContent = caption;
+  }
+
+  lbCaption.textContent = caption;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
     function close() {
       lb.classList.remove('open');
